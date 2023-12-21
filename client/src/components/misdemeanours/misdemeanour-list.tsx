@@ -21,6 +21,10 @@ return (
 		{data.length === 0 && 
 		<ShowLoading /> }
     <section className = "container">
+    <div className = "cell cell--heading">Citizen Id</div>
+    <div className = "cell cell--heading">Date</div>
+    <div className = "cell cell--heading">Misdemeanour</div>
+    <div className = "cell cell--heading">Punishment Idea</div>
         {data.length > 0 && 
         data.map((item: Misdemeanour) => {
         return <MisdemeanourItem key={item.citizenId} citizenId={item.citizenId} 

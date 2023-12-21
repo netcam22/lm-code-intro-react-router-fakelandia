@@ -12,8 +12,9 @@ const MisdemeanourItem : React.FC<Misdemeanour> = ({citizenId, misdemeanour, dat
     return (
     <>
         <div className = "cell">Citizen Id: {citizenId}</div>
-        <div className = "cell">Misdemeanour: {MISDEMEANOUR_ICONS[misdemeanour]} {misdemeanour}</div>
         <div className = "cell">Date: {date}</div>
+        <div className = "cell">Misdemeanour: 
+        {MISDEMEANOUR_ICONS[misdemeanour]} {misdemeanour}</div>
         <div className = "cell">Images goes here</div>
     </>
     )

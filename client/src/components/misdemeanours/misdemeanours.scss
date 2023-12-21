@@ -19,8 +19,14 @@
     flex-basis: 100%;
     position: sticky;
     border: 1px solid black;
+    text-align: center;
 
-    
+    &--heading {
+      background-color: $silver;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
     @include respond-small {
         flex-basis: calc(100 / 2 ) * 1%;
     }
@@ -39,7 +45,7 @@
 
   }
 
-  .loading-text span {
+  .loading {
     position: relative;
     margin-left: 1%;
     opacity: 0;
