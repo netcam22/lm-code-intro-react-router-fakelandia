@@ -1,0 +1,29 @@
+$coconut: rgb(235,236,247);
+$silver: rgb(235,236,245);
+$lavendar: rgb(174,177,215);
+$violet: rgb(113,119,186);
+$mid-blue:  rgb(52,60,156);
+$dark-blue: rgb(36,42,109);
+$darker-blue: rgb(26,30,78);
+$night: rgb(8,8,24);
+$cream: rgb(253,248,237);
+$noodles: rgb(249,227,182);
+$straw: rgb(244,206,127);
+$gold: rgb(239,185,72);
+$fire: rgb(244, 132, 40);
+
+@mixin respond-small {
+    @media (min-width: 600px) { @content };
+  }
+
+  @mixin respond-medium {
+    @media (min-width: 768px) { @content };
+  }
+
+  @mixin respond-large {
+    @media (min-width: 992px) { @content };
+  }
+
+  @mixin respond-x-large {
+    @media (min-width: 1200px) { @content };
+  }

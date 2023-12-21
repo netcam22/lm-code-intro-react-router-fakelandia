@@ -1,0 +1,17 @@
+.page {
+  flex-grow: 1;
+  line-height: 1.5;
+  margin:0;
+  padding: 0;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+.title {
+  background-color: $straw;
+  color: $dark-blue;
+  margin: 0;
+  padding: 2%;
+  text-align: center;
+}
