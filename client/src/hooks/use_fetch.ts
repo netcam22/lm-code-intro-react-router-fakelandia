@@ -23,9 +23,9 @@ export const useFetch = <T>(endPoint:string, dataProperty:string | null,
 		fetchData();
 		return () => {
 			rendered = true;
-		  };
+		};
 		}
 	});
-  };
-  
-  export default useFetch;
+};
+
+export default useFetch;
