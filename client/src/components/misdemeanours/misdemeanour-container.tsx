@@ -5,6 +5,7 @@ import MisdemeanourList from "./misdemeanour-list";
 import ShowLoading from "./../loading/show_loading";
 import { MISDEMEANOUR_DATA_HEADINGS, MisdemeanourHeading, MisdemeanourArray} from "./../../data/misdemeanour_data";
 import MisdemeanourTableHeading from "./misdemeanour-heading";
+import FilterMisdemeanoursForm from "../form-components/filter-misdemeanours-form";
 
 export const MisdemeanourContext = createContext<MisdemeanourArray>([]);
 
@@ -20,6 +21,7 @@ console.log(response);
 return (
 <>
     <h2 className = "title">Misdemeanours!</h2>
+    <FilterMisdemeanoursForm />
     <section className = "container">
     {MISDEMEANOUR_DATA_HEADINGS.map((heading: MisdemeanourHeading, index: number) => {
     return <MisdemeanourTableHeading key={index} heading={heading} />} 
