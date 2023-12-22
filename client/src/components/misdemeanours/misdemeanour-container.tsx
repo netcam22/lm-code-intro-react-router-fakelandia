@@ -6,8 +6,10 @@ import ShowLoading from "./../loading/show_loading";
 import { MISDEMEANOUR_DATA_HEADINGS, MisdemeanourHeading, MisdemeanourArray} from "./../../data/misdemeanour_data";
 import MisdemeanourTableHeading from "./misdemeanour-heading";
 import FilterMisdemeanoursForm from "../form-components/filter-misdemeanours-form";
+import { MisdemeanourFilterKind } from "../../data/filter_misdemeanour_form_data";
 
 export const MisdemeanourContext = createContext<MisdemeanourArray>([]);
+export const MisdemeanourFilterContext = createContext<MisdemeanourFilterKind>("any");
 
 export const MisdemeanourContainer : React.FC = () => {
 

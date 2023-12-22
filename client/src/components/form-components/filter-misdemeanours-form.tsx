@@ -2,7 +2,6 @@ import { useState, ChangeEvent} from 'react';
 import { SelectInput } from './select-input';
 import { FormSelectInputObject, formSelectInput, 
 	InitialValue, initialValues } from '../../data/filter_misdemeanour_form_data';
-	import { MISDEMEANOURS } from '../../../types/misdemeanours.types';
 import { validateInput } from '../../validate/validate_input';
 
 export interface InputProps {
@@ -37,6 +36,7 @@ const FilterMisdemeanoursForm = () => {
 
 	function validateInputField(title:string, regex: Array<RegExp>, value: string, 
 		message: Array<string>) {
+			console.log(regex);
 		const errorMessage  = validateInput(title, regex, value, message)
 				.reduce((acc: string, message: string) => acc+"; "+message, "")
 				.replace("; ", "");

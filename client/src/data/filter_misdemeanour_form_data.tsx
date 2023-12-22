@@ -1,4 +1,6 @@
 import { MISDEMEANOURS } from "../../types/misdemeanours.types";
+export const MISDEMEANOUR_FILTERS = ["any", ...MISDEMEANOURS]
+export type MisdemeanourFilterKind = (typeof MISDEMEANOUR_FILTERS)[number];
 
 export interface FormInputObject {
 	id: string;
@@ -18,10 +20,9 @@ export const formSelectInput: Array<FormSelectInputObject> = [
     id: "filter-misdemeanours",
     title: "Filter",
     role: "filterMisdemeanours",
-    regex: [/^all{1}$/, /^MISDEMEANOURS[0]{1}$/, /^MISDEMEANOURS[1]{1}$/,
-    /^MISDEMEANOURS[2]{1}$/, /^MISDEMEANOURS[3]{1}$/],
+    regex: [/^all{1}|rudeness{1}|vegetables{1}|lift{1}|united{1}$/],
     errorMessage: ['error: invalid selection'],
-    options: ["all", ...MISDEMEANOURS]
+    options: [...MISDEMEANOUR_FILTERS]
     }
 ];
 
