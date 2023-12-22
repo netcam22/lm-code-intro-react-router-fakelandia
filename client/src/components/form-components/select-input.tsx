@@ -1,6 +1,7 @@
 import { ChangeEventHandler} from 'react';
 import { InputProps } from "./filter-misdemeanours-form";
 import { SelectOption } from "./select-option";
+import { ErrorMessage } from './error-message';
 export interface SelectInputProps extends InputProps{
 	onChange: ChangeEventHandler<HTMLSelectElement>;
 	options: Array<string>;
@@ -16,5 +17,8 @@ export const SelectInput : React.FC<SelectInputProps> = (props) => {
 			{props.options.map((option, index) => 
 			<SelectOption key = {index.toString()} optionValue ={option} />)}
 		</select>
+        {props.errorMessage !== "" &&
+		<ErrorMessage message = {props.errorMessage}/>
+		}
     </> )
 }
