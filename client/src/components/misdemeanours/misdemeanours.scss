@@ -1,28 +1,35 @@
 .container {
     margin : 2%;
     padding: 2%;
-    display: flex;
+    display: grid;
     justify-content: space-around;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: stretch;
+    align-content: center;
     position: relative;
-    font-size: 1.2rem;
+    font-size: 1rem;
+  
+    @include respond-small {  
+      font-size: 1.2rem;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
 
+    @include respond-medium {  
+      font-size: 1.2rem;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    }
   }
 
   .cell {
     padding: 2%;
     margin: 0;
-    flex-grow: 1;
-    flex-basis: calc(100 / 4 ) * 1%;
     position: sticky;
     border: 1px solid black;
     text-align: center;
-    font-size: 1rem;
-    box-sizing: border-box;
 
     &--heading {
       background-color: $silver;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: bold;
     }
 
@@ -31,15 +38,11 @@
     }
 
     @include respond-medium {
-      font-size: 1.2rem;;
+      font-size: 1.2rem;
     }
 
     @include respond-large{
       font-size: 1.3rem;
-    }
-
-    @include respond-x-large{
-      font-size: 1.4rem;
     }
 
   }
@@ -51,7 +54,6 @@
     animation: move-emojis 1s forwards infinite;
     text-align: left;
     float: left;
-    flex-basis: 100%;
   }
 
 @keyframes move-emojis {
