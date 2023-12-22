@@ -3,6 +3,7 @@ import { SelectInput } from './select-input';
 import { FormSelectInputObject, formSelectInput, 
 	InitialValue, initialValues } from '../../data/filter_misdemeanour_form_data';
 import { validateInput } from '../../validate/validate_input';
+import { useMisdemeanourFilterContext } from '../../hooks/use_context';
 
 export interface InputProps {
 	title: string;
@@ -12,8 +13,8 @@ export interface InputProps {
 }
 
 const FilterMisdemeanoursForm = () => {
-	
-	const [input, setInput] = useState({...initialValues});
+
+	const [input, setInput] = useMisdemeanourFilterContext();
 	const [errors, setErrors] = useState({...initialValues});
 
 	function saveInputErrors(dataRole: string, inputValue:string) {
@@ -36,7 +37,6 @@ const FilterMisdemeanoursForm = () => {
 
 	function validateInputField(title:string, regex: Array<RegExp>, value: string, 
 		message: Array<string>) {
-			console.log(regex);
 		const errorMessage  = validateInput(title, regex, value, message)
 				.reduce((acc: string, message: string) => acc+"; "+message, "")
 				.replace("; ", "");
@@ -45,11 +45,13 @@ const FilterMisdemeanoursForm = () => {
 
 	function handleChange(event: ChangeEvent<HTMLSelectElement>) {
 		event.preventDefault();
+		if (setInput) {
 		setInput((currentData: InitialValue) =>
 			Object.assign({}, currentData, {
 				[event.target.id]: event.target.value,
 			})
 		)
+		}
 		saveInputErrors(event.target.id, event.target.value);
 	}
 
@@ -60,7 +62,7 @@ const FilterMisdemeanoursForm = () => {
 				key = {field.id}
 				title = {field.title} 
 				errorMessage = {errors[field.role]}
-				value={input[field.role]} 
+				value={input? input[field.role]: "all"} 
 				onChange={handleChange} 
 				role = {field.role} 
 				options = {field.options}

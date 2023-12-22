@@ -5,8 +5,7 @@ import { useMisdemeanourContext } from "../../hooks/use_context";
 
 const MisdemeanourList : React.FC = () => {
 
-    const misdemeanourData = useMisdemeanourContext();
-    console.log("context", misdemeanourData);
+const misdemeanourData = useMisdemeanourContext();
 
 return (
         <>
