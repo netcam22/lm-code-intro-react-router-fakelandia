@@ -8,9 +8,9 @@ const ShowLoading: React.FC = () => {
       {loadingArray.map((emoji, index) => {
         const style: CSSProperties = {animationDelay: index / 5 + "s",}
         return (
-          <span className="loading" aria-hidden="true" key={`${index}${emoji}`} style={style}>
+          <div className="loading" aria-hidden="true" key={`${index}${emoji}`} style={style}>
             {emoji}
-          </span>
+          </div>
         )
       })}
     </h3>

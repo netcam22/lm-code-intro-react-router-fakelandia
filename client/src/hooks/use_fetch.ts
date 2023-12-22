@@ -12,7 +12,8 @@ export const useFetch = <T>(endPoint:string, dataProperty:string | null,
 				if (response.status === 200) {
 					const json = await response.json();
 					if (!rendered) {
-					dataProperty !== null? setData(json[dataProperty]): setData(json);
+					dataProperty !== null? setData(json[dataProperty])
+					: setData([...data, json]);
 					}
 				}
 			} catch (error) {
