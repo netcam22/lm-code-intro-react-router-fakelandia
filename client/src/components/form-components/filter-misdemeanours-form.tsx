@@ -1,7 +1,7 @@
 import { useState, ChangeEvent} from 'react';
 import { SelectInput } from './select-input';
 import { FormSelectInputObject, formSelectInput, 
-	InitialValue, initialValues } from '../../data/filter_misdemeanour_form_data';
+	InitialValue, errorValues } from '../../data/filter_misdemeanour_form_data';
 import { validateInput } from '../../validate/validate_input';
 import { useMisdemeanourFilterContext } from '../../hooks/use_context';
 
@@ -15,7 +15,7 @@ export interface InputProps {
 const FilterMisdemeanoursForm = () => {
 
 	const [input, setInput] = useMisdemeanourFilterContext();
-	const [errors, setErrors] = useState({...initialValues});
+	const [errors, setErrors] = useState({...errorValues});
 
 	function saveInputErrors(dataRole: string, inputValue:string) {
 		const dataObject = formSelectInput.find((dataObject: FormSelectInputObject) =>
