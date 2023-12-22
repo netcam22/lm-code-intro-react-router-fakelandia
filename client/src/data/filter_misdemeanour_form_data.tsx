@@ -18,7 +18,7 @@ export const formSelectInput: Array<FormSelectInputObject> = [
     id: "filter-misdemeanours",
     title: "Filter",
     role: "filterMisdemeanours",
-    regex: [/^MISDEMEANOURS[0]{1}$/, /^MISDEMEANOURS[1]{1}$/,
+    regex: [/^all{1}$/, /^MISDEMEANOURS[0]{1}$/, /^MISDEMEANOURS[1]{1}$/,
     /^MISDEMEANOURS[2]{1}$/, /^MISDEMEANOURS[3]{1}$/],
     errorMessage: ['error: invalid selection'],
     options: ["all", ...MISDEMEANOURS]
