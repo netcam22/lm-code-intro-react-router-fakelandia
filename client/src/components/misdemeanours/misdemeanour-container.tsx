@@ -20,7 +20,7 @@ const url = "http://localhost:8080/api/misdemeanours/10";
 const [data, setData] = useState<MisdemeanourArray>([]);
 const [input, setInput] = useState({...initialValues});
 
-const response = useFetch<Misdemeanour>(url, "misdemeanours", data, setData);
+useFetch<Misdemeanour>(url, "misdemeanours", data, setData);
 
 return (
 <>
