@@ -2,7 +2,7 @@ import { useEffect} from "react";
 import { isError } from '../helpers/is_error';
 
 export const useFetch = <T>(endPoint:string, dataProperty:string | null, 
-	data: Array<T> | null, setData: React.Dispatch<React.SetStateAction<Array<T>>> | null)=> {
+	data: Array<T>, setData: React.Dispatch<React.SetStateAction<Array<T>>>)=> {
 
     useEffect(() => {
 		let rendered = false;
@@ -11,7 +11,7 @@ export const useFetch = <T>(endPoint:string, dataProperty:string | null,
 				const response = await fetch(endPoint);
 				if (response.status === 200) {
 					const json = await response.json();
-					if (!rendered && data !== null && setData !== null ) {
+					if (!rendered) {
 					dataProperty !== null? setData(json[dataProperty])
 					: setData([...data, json]);
 					}
@@ -20,7 +20,7 @@ export const useFetch = <T>(endPoint:string, dataProperty:string | null,
                 console.log(isError(error) ? error.message : 'Unknown error!');
 			}
 		};
-		if (data !== null && data.length === 0) {
+		if (data.length === 0) {
 		fetchData();
 		return () => {
 			rendered = true;
