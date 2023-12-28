@@ -4,7 +4,7 @@ import { useMisdemeanourContext } from "../../hooks/use_context";
 import useFetch from "../../hooks/use_fetch";
 import { useState } from "react";
 
-type PiscumImage =
+type PicsumImage =
         {
         id: string,
         author: string,
@@ -20,8 +20,8 @@ const misdemeanourData = useMisdemeanourContext();
 
 const noOfImages = misdemeanourData.length;
 const imageUrl = `https://picsum.photos/v2/list?page=1&limit=${noOfImages}`;
-const [imageData, setImageData] = useState<Array<PiscumImage>>([]);
-useFetch<PiscumImage>(imageUrl, null, imageData, setImageData);
+const [imageData, setImageData] = useState<Array<PicsumImage>>([]);
+useFetch<PicsumImage>(imageUrl, null, imageData, setImageData);
 console.log(imageData[0]);
 
 return (
