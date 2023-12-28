@@ -41,7 +41,7 @@
       }
 
       &--light {
-        background-color: $silver;
+        background-color: $cream;
       }
     }
 
@@ -49,7 +49,7 @@
       margin: 0 2%;
       padding: 4%;
       font-size: 1.5rem;
-      background-color: $silver;
+      background-color: $cream;
       font-family: "Algeria";
 
       @include respond-medium { 
