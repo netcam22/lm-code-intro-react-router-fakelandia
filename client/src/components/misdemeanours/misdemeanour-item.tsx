@@ -1,4 +1,11 @@
-import {Misdemeanour} from "../../../types/misdemeanours.types";
+import {MisdemeanourKind} from "../../../types/misdemeanours.types";
+
+type MisdemeanourItemProps = {
+    citizenId: number,
+    misdemeanour: MisdemeanourKind,
+    date: string,
+    indexValue: string
+}
 
 const MISDEMEANOUR_ICONS = {
 	rudeness: "🤪",
@@ -6,8 +13,10 @@ const MISDEMEANOUR_ICONS = {
 	lift: "🗣",
 	united:  "😈",
  }
+
+ const picsumUrl = "https://picsum.photos/300/200?random=";
  
-const MisdemeanourItem : React.FC<Misdemeanour> = ({citizenId, misdemeanour, date}) => {
+const MisdemeanourItem : React.FC<MisdemeanourItemProps> = ({citizenId, misdemeanour, date, indexValue}) => {
 
     return (
     <>
@@ -15,8 +24,8 @@ const MisdemeanourItem : React.FC<Misdemeanour> = ({citizenId, misdemeanour, dat
         <div className = "cell">Date: {date}</div>
         <div className = "cell">Misdemeanour: 
         {MISDEMEANOUR_ICONS[misdemeanour]} {misdemeanour}</div>
-        <div className = "cell">Image goes here</div>
+        <div className = "cell"><img src={picsumUrl+indexValue} /></div>
     </>
     )
-    }
+}
 export default MisdemeanourItem;

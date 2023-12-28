@@ -1,7 +1,7 @@
-import { Misdemeanour } from "../../types/misdemeanours.types";
-
-export type MisdemeanourArray  = Array<Misdemeanour>;
-
+import { Misdemeanour} from "../../types/misdemeanours.types";
+export interface MisdemeanourObject extends Misdemeanour {
+    indexValue: string,
+}
 export type MisdemeanourHeading = string;
 
 export type MisdemeanourHeadings  = Array<MisdemeanourHeading>;

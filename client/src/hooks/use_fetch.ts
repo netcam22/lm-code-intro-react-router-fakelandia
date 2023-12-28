@@ -26,6 +26,12 @@ export const useFetch = <T>(endPoint:string, dataProperty:string | null,
 			rendered = true;
 		};
 		}
+		else {
+			const myNewData: Array<T> = data.map((item: T, index: number) => {
+				return {...item, indexValue : index.toString()}
+			});
+			setData(myNewData);
+		}
 	});
 };
 
