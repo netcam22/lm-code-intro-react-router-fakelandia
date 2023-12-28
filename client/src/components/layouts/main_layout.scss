@@ -9,9 +9,11 @@
 }
 
 .title {
-  background-color: $straw;
+  background-color: transparent;
+  font-family: "Algeria";
+  font-size: 5rem;
   color: $dark-blue;
   margin: 0;
-  padding: 2%;
+  padding: 0;
   text-align: center;
 }

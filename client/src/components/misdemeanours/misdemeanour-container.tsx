@@ -24,7 +24,7 @@ const response = useFetch<Misdemeanour>(url, "misdemeanours", data, setData);
 
 return (
 <>
-    <h2 className = "title">Misdemeanours!</h2>
+    <h2 className = "title">Misdemeanours</h2>
     {<MisdemeanourFilterContext.Provider value={[input, setInput]}>
     <FilterMisdemeanoursForm />
     </MisdemeanourFilterContext.Provider>}

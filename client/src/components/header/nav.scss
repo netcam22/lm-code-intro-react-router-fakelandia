@@ -48,19 +48,17 @@
       padding: 0;
       font-size: 1.5rem;
       background-color: $silver;
+      font-family: "Algeria";
 
       @include respond-medium { 
         font-size: 1.8rem;
-      }
-
-      &--dark {
-        color: $darker-blue;
       }
 
       &--dark a {
         text-decoration: none;
         word-break:keep-all;
         cursor: pointer;
+        color: $dark-blue;
       }
 
       &--dark a:active {

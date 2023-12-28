@@ -1,9 +1,7 @@
 
 const Home : React.FC = () => 
 <>
-<section className = "container">
-Home!
-</section>
+<h2 className = "title">Home</h2>
 </>;
 
 export default Home;

@@ -12,6 +12,14 @@ $straw: rgb(244,206,127);
 $gold: rgb(239,185,72);
 $fire: rgb(244, 132, 40);
 
+/* Font: Algeria Regular[Font]
+"https://fontsgeek.com/fonts/Algerian-Regular"
+Accessed 28/12/23 */
+@font-face {
+  font-family: "Algeria";
+  src: url("./src/assets/fonts/AlgerianRegular.ttf");
+}
+
 @mixin respond-small {
     @media (min-width: 600px) { @content };
   }
