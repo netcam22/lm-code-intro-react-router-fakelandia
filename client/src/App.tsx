@@ -1,12 +1,12 @@
 import './App.scss'
 import { BrowserRouter } from 'react-router-dom';
-import { Router } from './components/router/router';
+import { MisdemeanourWrapper } from './components/misdemeanours/misdemeanour-wrapper';
 
 function App() {
   return (
    <>
    <BrowserRouter>
-     <Router/>
+     <MisdemeanourWrapper/>
     </BrowserRouter>
    </>
   );

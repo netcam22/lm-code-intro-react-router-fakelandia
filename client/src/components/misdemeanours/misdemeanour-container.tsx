@@ -1,25 +1,20 @@
 import { useState, createContext } from "react";
-import { useFetch} from "./../../hooks/use_fetch";
 import MisdemeanourList from "./misdemeanour-list";
 import ShowLoading from "./../loading/show_loading";
 import { MISDEMEANOUR_DATA_HEADINGS, MisdemeanourHeading, MisdemeanourObject} from "./../../data/misdemeanour_data";
 import MisdemeanourTableHeading from "./misdemeanour-heading";
 import FilterMisdemeanoursForm from "../form-components/filter-misdemeanours-form";
 import { InitialValue, initialValues} from "../../data/filter_misdemeanour_form_data";
+import { useMisdemeanourContext } from "../../hooks/use_context";
 
 export type FilterContextType = [InitialValue, React.Dispatch<React.SetStateAction<InitialValue>>] | [];
 
-export const MisdemeanourContext = createContext<Array<MisdemeanourObject>>([]);
 export const MisdemeanourFilterContext = createContext<FilterContextType>([]);
 
 export const MisdemeanourContainer : React.FC = () => {
 
-const url = "http://localhost:8080/api/misdemeanours/10";
-
-const [data, setData] = useState<Array<MisdemeanourObject>>([]);
+const misdemeanourData = useMisdemeanourContext();
 const [input, setInput] = useState({...initialValues});
-
-useFetch<MisdemeanourObject>(url, "misdemeanours", data, setData);
 
 return (
 <>
@@ -31,19 +26,12 @@ return (
     {MISDEMEANOUR_DATA_HEADINGS.map((heading: MisdemeanourHeading, index: number) => {
     return <MisdemeanourTableHeading key={index} heading={heading} />} 
     )}
-		{data.length === 0 && 
+        {misdemeanourData.length === 0 && 
 		<ShowLoading /> }
 
-        {data.length > 0 && input.filterMisdemeanours === "all" &&
-        <MisdemeanourContext.Provider value={data}>
-        <MisdemeanourList/>
-        </MisdemeanourContext.Provider> } 
+        {misdemeanourData.length > 0 &&
+        <MisdemeanourList filterSelected = {input.filterMisdemeanours}/>} 
 
-        {data.length > 0 && input.filterMisdemeanours !== "all" &&
-        <MisdemeanourContext.Provider 
-        value={(data.filter(item => item.misdemeanour === input.filterMisdemeanours))}>
-        <MisdemeanourList/>
-        </MisdemeanourContext.Provider> } 
     </section>
 </>
 )
