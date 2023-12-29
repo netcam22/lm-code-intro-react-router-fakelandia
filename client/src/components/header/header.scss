@@ -3,25 +3,31 @@
     display: flex;
     margin: 0;
     padding: 2%;
-    background-color: $silver;
+    background-color: $cream;
     color: $fire;
     flex-wrap: wrap;
     flex-direction: column;
     box-sizing: border-box;
+    min-height: 30vh;
 
     @include respond-medium {
         flex-direction: row;
     }
 
-    &__heading {
-        flex-basis: 50%; 
-        font-size: 1.3rem;
-        margin: 2%;
-
+    &__logo {
+        width: 90%;
+        flex-basis: 90%;
+        
         @include respond-medium {
+            max-width: 40%;
+            flex-basis: 40%;
+        }
+
+        @include respond-large {
+            max-width: 25%;
             flex-basis: 25%;
-            font-size: 2rem;
             margin: 0;
         }
     }
+
 }

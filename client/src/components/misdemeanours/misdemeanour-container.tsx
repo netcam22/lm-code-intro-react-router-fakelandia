@@ -1,30 +1,29 @@
 import { useState, createContext } from "react";
 import { useFetch} from "./../../hooks/use_fetch";
-import {Misdemeanour} from "./../../../types/misdemeanours.types";
 import MisdemeanourList from "./misdemeanour-list";
 import ShowLoading from "./../loading/show_loading";
-import { MISDEMEANOUR_DATA_HEADINGS, MisdemeanourHeading, MisdemeanourArray} from "./../../data/misdemeanour_data";
+import { MISDEMEANOUR_DATA_HEADINGS, MisdemeanourHeading, MisdemeanourObject} from "./../../data/misdemeanour_data";
 import MisdemeanourTableHeading from "./misdemeanour-heading";
 import FilterMisdemeanoursForm from "../form-components/filter-misdemeanours-form";
 import { InitialValue, initialValues} from "../../data/filter_misdemeanour_form_data";
 
 export type FilterContextType = [InitialValue, React.Dispatch<React.SetStateAction<InitialValue>>] | [];
 
-export const MisdemeanourContext = createContext<MisdemeanourArray>([]);
+export const MisdemeanourContext = createContext<Array<MisdemeanourObject>>([]);
 export const MisdemeanourFilterContext = createContext<FilterContextType>([]);
 
 export const MisdemeanourContainer : React.FC = () => {
 
 const url = "http://localhost:8080/api/misdemeanours/10";
 
-const [data, setData] = useState<MisdemeanourArray>([]);
+const [data, setData] = useState<Array<MisdemeanourObject>>([]);
 const [input, setInput] = useState({...initialValues});
 
-const response = useFetch<Misdemeanour>(url, "misdemeanours", data, setData);
+useFetch<MisdemeanourObject>(url, "misdemeanours", data, setData);
 
 return (
 <>
-    <h2 className = "title">Misdemeanours!</h2>
+    <h2 className = "title">Misdemeanours</h2>
     {<MisdemeanourFilterContext.Provider value={[input, setInput]}>
     <FilterMisdemeanoursForm />
     </MisdemeanourFilterContext.Provider>}

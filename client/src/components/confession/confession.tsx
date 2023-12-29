@@ -1,9 +1,7 @@
 
 const Confession : React.FC = () => 
 <>
-<section className = "container">
-Confession!
-</section>
+<h2 className = "title">Confess to Us</h2>
 </>;
 
 export default Confession;

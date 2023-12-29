@@ -1,6 +1,5 @@
 
 .navbar {
-    align-items: left;
     margin: 2% 0;
     padding: 0;
     flex-wrap: wrap;
@@ -9,8 +8,12 @@
     max-height:fit-content;
 
     @include respond-medium { 
-        flex-basis: 75%;
+        flex-basis: 60%;
     }
+
+    @include respond-large { 
+      flex-basis: 75%;
+  }
 
     &--light {
       background-color: $silver;
@@ -24,43 +27,45 @@
       top:0;
       left: 0;
       z-index: 1000;
-      padding: 1%;
+      padding: 0;
+      width: 90%;
       display: none;
-      width: 100%;
       margin: 0;
       line-height: 1.8rem;
 
       @include respond-medium { 
         flex-direction: row;
         position: relative;
-        justify-content:space-evenly;
-        padding: 0;
+        justify-content:flex-end;
         display: flex;
       }
 
       &--light {
-        background-color: $silver;
+        background-color: $cream;
       }
     }
 
     &__item {
       margin: 0 2%;
-      padding: 0;
+      padding: 4%;
       font-size: 1.5rem;
-      background-color: $silver;
+      background-color: $cream;
+      font-family: "Algeria";
 
       @include respond-medium { 
-        font-size: 1.8rem;
+        font-size: 1.2rem;
+        padding: 0;
       }
 
-      &--dark {
-        color: $darker-blue;
+      @include respond-large { 
+        font-size: 1.9rem;
       }
 
       &--dark a {
         text-decoration: none;
         word-break:keep-all;
         cursor: pointer;
+        color: $dark-blue;
       }
 
       &--dark a:active {
