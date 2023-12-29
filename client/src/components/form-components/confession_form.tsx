@@ -1,10 +1,11 @@
 import { useState, ChangeEvent, MouseEvent} from 'react';
-import ConfessionFormHeader from './confession_form_header';
+import FormHeader from './form_header';
 import {TextInput} from './text_input';
 import { SelectInput } from './select-input';
 import { TextAreaInput } from './text_area_input';
 import { SubmitButton } from './submit_button';
-import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, initialValues} 
+import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, 
+	initialValues, inputInformation} 
 from "./../../data/confession_form_data";
 import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
 from '../../../types/form.types';
@@ -23,7 +24,8 @@ const ConfessionForm = () => {
 	const [input, setInput] = useState({...initialValues});
 	const [errors, setErrors] = useState({...initialValues});
 	const [attempted, setAttempted] = useState(false);
- 
+	const [inputDetails, setInputDetails] = useState({...inputInformation});
+
 	async function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
 		event.preventDefault();
 		if (!attempted) {
@@ -44,9 +46,12 @@ const ConfessionForm = () => {
 			}),
 			});
 			if (response.ok) {
-			const formData = await response.json();
-			console.log(response, formData);
-				//setData((data: Array<MisdemeanourObject>) => [...data, formData]);
+			const formResponse = await response.json();
+			setInputDetails( 
+				{messages: [formResponse.message],
+					success: formResponse.success,
+					justTalked: formResponse.justTalked});
+			//setData((data: Array<MisdemeanourObject>) => [...data, formData]);
 			}  
 		} 
 		catch (error) {
@@ -106,7 +111,10 @@ const ConfessionForm = () => {
 
 	return (
 		<section className='form'>
-			<ConfessionFormHeader />
+			{inputDetails.messages.map((message: string, index: number) => 
+			<FormHeader key = {index.toString()} message = {message}
+			success = {inputDetails.success} justTalked = {inputDetails.justTalked}/>
+			)}
 			<div className = "col-80-centre">
 
 			{formTextInput.map((field: FormInputObject) => 

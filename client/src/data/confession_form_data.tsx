@@ -7,6 +7,13 @@ from "../../types/form.types";
 
 export type InitialValue = {[key: string]: string};
 
+export const inputInformation = {
+messages: ["It's very difficult to catch people committing misdemeanours so we appreciate it when citizens confess to us directly.", 
+"However, if you're just having a hard day and need to vent then you're welcome to contact us here too. Up to you!"],
+success: null,
+justTalked: null
+}
+
 export const formTextInput: Array<FormInputObject> = [
     {
     id: "input-1",
