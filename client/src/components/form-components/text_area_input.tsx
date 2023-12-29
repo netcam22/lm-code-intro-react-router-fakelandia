@@ -23,7 +23,7 @@ export const TextAreaInput : React.FC<TextAreaInputProps> = (props) => {
 					value={props.value}
 					onChange={props.onChange}  
 					/>
-    {props.submitted && props.errorMessage !== "" &&
+    {props.attempted && props.errorMessage !== "" &&
 		<ErrorMessage message = {props.errorMessage}/>
 		}
 	</>

@@ -17,7 +17,7 @@ return (
 					value = {props.value}
 					onChange={props.onChange} 
 		/>
-		{props.submitted && props.errorMessage !== "" &&
+		{props.attempted && props.errorMessage !== "" &&
 		<ErrorMessage message = {props.errorMessage}/>
 		}
     </> 

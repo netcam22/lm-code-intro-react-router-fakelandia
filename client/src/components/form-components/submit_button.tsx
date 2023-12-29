@@ -7,7 +7,7 @@ interface SubmitButtonProps {
 	errorMessages: InitialValue;
 	id: string;
 	role: string;
-	submitted: boolean;
+	attempted: boolean;
 }
 
 function manageSubmitButton(errorMessages: InitialValue)  {
@@ -17,8 +17,8 @@ function manageSubmitButton(errorMessages: InitialValue)  {
 }
 
 export const SubmitButton : React.FC<SubmitButtonProps> =
-	({buttonText, onSubmitHandler, errorMessages, id, role, submitted}) => {
-	const disableButton = submitted? manageSubmitButton(errorMessages): false;
+	({buttonText, onSubmitHandler, errorMessages, id, role, attempted}) => {
+	const disableButton = attempted? manageSubmitButton(errorMessages): false;
 	return (
 	<button
 	className = "form__button"

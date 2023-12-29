@@ -19,7 +19,7 @@ export const SelectInput : React.FC<SelectInputProps> = (props) => {
 			{props.options.map((option, index) => 
 			<SelectOption key = {index.toString()} optionValue ={option} />)}
 		</select>
-        {props.errorMessage !== "" &&
+        {props.attempted && props.errorMessage !== "" &&
 		<ErrorMessage message = {props.errorMessage}/>
 		}
     </> )

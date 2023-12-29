@@ -14,22 +14,21 @@ export interface InputProps {
 	role: string;
 	value: string;
 	errorMessage: string;
-	submitted: boolean;
+	attempted: boolean;
 }
 
 const ConfessionForm = () => {
 	
 	const [input, setInput] = useState({...initialValues});
 	const [errors, setErrors] = useState({...initialValues});
-	const [submitted, setSubmitted] = useState(false);
+	const [attempted, setAttempted] = useState(false);
 
 	function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
-		if (!submitted) {
+		if (!attempted) {
 			saveAllErrors();
-			setSubmitted(true);
+			setAttempted(true);
 		}		
 	}
-
 
 	function setInputError(dataRole: string, errorString: string) {
 		setErrors((currentErrors) =>
@@ -89,7 +88,7 @@ const ConfessionForm = () => {
 				errorMessage = {errors[field.role]}
 				value={input[field.role]} 
 				onChange={handleChange} 
-				submitted={submitted}
+				attempted={attempted}
 				role = {field.role} 
 			/>)
 			}
@@ -102,7 +101,7 @@ const ConfessionForm = () => {
 				errorMessage = {errors[field.role]}
 				value={input[field.role]} 
 				onChange={handleChange} 
-				submitted={submitted} 
+				attempted={attempted} 
 				role = {field.role} 
 				options = {field.options}
 				/>)
@@ -116,7 +115,7 @@ const ConfessionForm = () => {
 				errorMessage = {errors[field.role]}
 				value={input[field.role]} 
 				onChange={handleChange} 
-				submitted={submitted} 
+				attempted={attempted} 
 				role = {field.role} 
 				size = {field.size}
 			/>)
@@ -126,7 +125,7 @@ const ConfessionForm = () => {
 			buttonText = "Confess" 
 			id="submitConfessionButton" 
 			role="submitButton"
-			submitted={submitted}
+			attempted={attempted}
 			onSubmitHandler = {handleSubmit}
 			errorMessages = {errors}
 			/>
