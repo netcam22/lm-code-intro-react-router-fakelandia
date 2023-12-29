@@ -27,7 +27,8 @@ const ConfessionForm = () => {
 		if (!attempted) {
 			saveAllErrors();
 			setAttempted(true);
-		}		
+		}	
+		//console.log(input);
 	}
 
 	function setInputError(dataRole: string, errorString: string) {

@@ -4,10 +4,10 @@ import NotFound from "../not_found/not_found";
 import Home from "../../components/home/home";
 import Confession from "../confession/confession";
 import {MisdemeanourContainer} from "../misdemeanours/misdemeanour-container";
-import MildPublicRudeness from "../misdemeanours/misdemeanour-type/mild_public_rudeness";
-import SpeakingInALift from "../misdemeanours/misdemeanour-type/speaking_in_a_lift";
-import NotEatingYourVegetables from "../misdemeanours/misdemeanour-type/not_eating_your_vegetables";
-import SupportingManchesterUnited from "../misdemeanours/misdemeanour-type/supporting_manchester_united";
+import MildPublicRudeness from "../misdemeanours/misdemeanour-kind/mild_public_rudeness";
+import SpeakingInALift from "../misdemeanours/misdemeanour-kind/speaking_in_a_lift";
+import NotEatingYourVegetables from "../misdemeanours/misdemeanour-kind/not_eating_your_vegetables";
+import SupportingManchesterUnited from "../misdemeanours/misdemeanour-kind/supporting_manchester_united";
 
 
 export const Router = () => {
