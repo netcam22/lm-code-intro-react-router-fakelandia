@@ -68,6 +68,7 @@ const FilterMisdemeanoursForm = () => {
 				onChange={handleChange} 
 				role = {field.role} 
 				options = {field.options}
+				optionValues = {field.optionValues}
 				attempted = {true}
 				/>)
 			}

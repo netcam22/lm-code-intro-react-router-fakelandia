@@ -104,6 +104,7 @@ const ConfessionForm = () => {
 				attempted={attempted} 
 				role = {field.role} 
 				options = {field.options}
+				optionValues = {field.optionValues}
 				/>)
 			}
 

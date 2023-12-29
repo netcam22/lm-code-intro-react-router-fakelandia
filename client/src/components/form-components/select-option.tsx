@@ -1,7 +1,8 @@
 export interface SelectOptionProps{
+    option: string;
 	optionValue: string;
 }
 
-export const SelectOption : React.FC<SelectOptionProps> = ({optionValue}) => (
-    <option value={optionValue}>{optionValue}</option>
+export const SelectOption : React.FC<SelectOptionProps> = ({option, optionValue}) => (
+    <option value={optionValue}>{option}</option>
 );
