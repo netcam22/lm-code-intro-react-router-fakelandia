@@ -2,14 +2,30 @@
 	border-radius: 5px;
 	padding: 1%;
     box-sizing: border-box;
+    width: 60%;
+    margin: 0 auto;
+
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
 
     &__input {
         width: 100%;
         padding: 1%;
-        border: 1px solid #ccc;
+        border: 1px solid $violet;
         border-radius: 4px;
         resize: vertical;
+        box-sizing: border-box;
+        font-size: 1.1rem;
+        margin: 0;
+
+        &--narrow {
+            width: 50%;
+            margin: 0 auto;
         }
+    }
 
     &__label {
         padding: 1% 1% 1% 0;
@@ -18,39 +34,41 @@
     }
 
     &__button {
-        background-color: #04AA6D;
-        color: white;
+        background-color: $dark-blue;
+        color: $coconut;
         padding: 1% 2%;
         border: none;
         border-radius: 4px;
         cursor: pointer;
         float: right;
+        font-size: 1.1rem;
     }
     
     &__button:hover {
-        background-color: #040504;
+        background-color: $fire;
+        color: $darker-blue;
     }
     
     &__button:disabled{
-    border: 1px solid #999999;
-    background-color: #cccccc;
-    color: #666666;
+    border: 1px solid $violet;
+    background-color: $silver;
+    color: $violet;
     }
 
     &__message {
         width: 100%;
         &--error {
-            color: #d60812;    
+            color: $autumn;   
         }
         &--valid {
-            color:  #2b1a1a;
+            color: $dark-blue;
         }
     }
     
 }
 
-  .col-100-left {
+  .col-80-centre {
 	float: left;
 	width: 80%;
-	margin: 10%;
+	margin: 5% 10%;
   }

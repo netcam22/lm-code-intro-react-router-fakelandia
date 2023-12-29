@@ -79,9 +79,9 @@ const ConfessionForm = () => {
 	return (
 		<section className='form'>
 			<ConfessionFormHeader />
-			<div className = "col-100-left">
+			<div className = "col-80-centre">
 
-			{formTextInput.map((field: FormInputObject, i: number) => 
+			{formTextInput.map((field: FormInputObject) => 
 
 			<TextInput 
 				key = {field.id}
@@ -94,7 +94,7 @@ const ConfessionForm = () => {
 			/>)
 			}
 
-			{formSelectInput.map((field: FormSelectInputObject, i: number) => 
+			{formSelectInput.map((field: FormSelectInputObject) => 
 
 				<SelectInput
 				key = {field.id}
@@ -108,17 +108,17 @@ const ConfessionForm = () => {
 				/>)
 			}
 
-			{formTextAreaInput.map((field: FormTextAreaInputObject, i: number) => 
+			{formTextAreaInput.map((field: FormTextAreaInputObject) => 
 
 			<TextAreaInput 
-				key = {formSelectInput[i].id}
-				title = {formTextAreaInput[i].title} 
-				errorMessage = {errors[formTextAreaInput[i].role]}
-				value={input[formTextAreaInput[i].role]} 
+				key = {field.id}
+				title = {field.title} 
+				errorMessage = {errors[field.role]}
+				value={input[field.role]} 
 				onChange={handleChange} 
 				submitted={submitted} 
-				role = {formTextAreaInput[i].role} 
-				size = {formTextAreaInput[i].size}
+				role = {field.role} 
+				size = {field.size}
 			/>)
 			}
 

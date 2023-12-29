@@ -1,5 +1,5 @@
 import { MISDEMEANOURS } from "../../types/misdemeanours.types";
-export const MISDEMEANOUR_FORM_OPTONS = [...MISDEMEANOURS, "I just want to talk"];
+export const MISDEMEANOUR_FORM_OPTONS = ["", ...MISDEMEANOURS, "I just want to talk"];
 export type MisdemeanourFormKind = (typeof MISDEMEANOUR_FORM_OPTONS)[number];
 import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
 from "../../types/form.types";
@@ -34,7 +34,7 @@ export const formTextAreaInput: Array<FormTextAreaInputObject> = [
     role: "confession",
     regex: [/^.{10,500}$/gi],
     errorMessage: ["must be between 10 and 500 characters"],
-    size: {rows: 5, cols: 20}
+    size: {rows: 8, cols: 10}
     }
 ];
 
