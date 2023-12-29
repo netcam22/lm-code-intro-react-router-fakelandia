@@ -4,9 +4,9 @@ import { isError } from '../helpers/is_error';
 export const useFetch = <T>(endPoint:string, dataProperty:string | null, 
 	data: Array<T>, setData: React.Dispatch<React.SetStateAction<Array<T>>>)=> {
 
-	function addIndex(json: Array<T>)  {
-	const indexedData = json.map((item: T, index: number) => {
-				return {...item, indexValue : index.toString()}
+	function addIndex(jsonData: Array<T>)  {
+	const indexedData = jsonData.map((item: T, index: number) => {
+			return {...item, indexValue : index.toString()}
 		});
 		setData(indexedData);
 	}
