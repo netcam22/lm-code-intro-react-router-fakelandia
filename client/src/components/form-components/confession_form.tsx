@@ -9,6 +9,8 @@ from "./../../data/confession_form_data";
 import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
 from '../../../types/form.types';
 import { validateInput } from "./../../validate/validate_input";
+import { Misdemeanour } from '../../../types/misdemeanours.types';
+import { MisdemeanourObject } from '../../data/misdemeanour_data';
 export interface InputProps {
 	title: string;
 	role: string;
@@ -22,13 +24,34 @@ const ConfessionForm = () => {
 	const [input, setInput] = useState({...initialValues});
 	const [errors, setErrors] = useState({...initialValues});
 	const [attempted, setAttempted] = useState(false);
-
-	function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
+ 
+	async function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
+		event.preventDefault();
 		if (!attempted) {
 			saveAllErrors();
 			setAttempted(true);
 		}	
-		//console.log(input);
+		try {
+			const response = await fetch("http://localhost:8080/api/confess", {
+			method: "POST", 
+			headers: {
+				"Content-Type": "application/json",
+			}, 
+			body : JSON.stringify({
+				subject :input.subject, 
+				reason: input.reason, 
+				details: input.details
+			}),
+			});
+			if (response.ok) {
+			const formData = await response.json();
+			console.log(response, formData);
+				//setData((data: Array<MisdemeanourObject>) => [...data, formData]);
+			}  
+		} 
+		catch (error) {
+			console.log(error)
+		}
 	}
 
 	function setInputError(dataRole: string, errorString: string) {

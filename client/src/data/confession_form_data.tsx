@@ -22,7 +22,7 @@ export const formSelectInput: Array<FormSelectInputObject> = [
     id: "input-2",
     title: "Reason for contact",
     role: "reason",
-    regex: [/^I just want to talk{1}|rudeness{1}|vegetables{1}|lift{1}|united{1}$/],
+    regex: [/^just-talk{1}|rudeness{1}|vegetables{1}|lift{1}|united{1}$/],
     errorMessage: ['error: invalid selection'],
     options: [...MISDEMEANOUR_FORM_OPTIONS],
     optionValues: [...MISDEMEANOUR_FORM_OPTION_VALUES]
