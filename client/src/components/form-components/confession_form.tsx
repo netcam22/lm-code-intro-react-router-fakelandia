@@ -9,8 +9,7 @@ from "./../../data/confession_form_data";
 import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
 from '../../../types/form.types';
 import { validateInput } from "./../../validate/validate_input";
-import { Misdemeanour } from '../../../types/misdemeanours.types';
-import { MisdemeanourObject } from '../../data/misdemeanour_data';
+
 export interface InputProps {
 	title: string;
 	role: string;
@@ -30,7 +29,8 @@ const ConfessionForm = () => {
 		if (!attempted) {
 			saveAllErrors();
 			setAttempted(true);
-		}	
+		}
+		if (attempted || formHasNoErrors()) {
 		try {
 			const response = await fetch("http://localhost:8080/api/confess", {
 			method: "POST", 
@@ -52,6 +52,11 @@ const ConfessionForm = () => {
 		catch (error) {
 			console.log(error)
 		}
+	}
+	}
+
+	function formHasNoErrors() {
+		return Object.values(errors).reduce((acc, error) => acc+error, "") === "";
 	}
 
 	function setInputError(dataRole: string, errorString: string) {

@@ -17,7 +17,7 @@ export const SelectInput : React.FC<SelectInputProps> = (props) => {
         <select className='form__input'
 			id={props.role} value={props.value} 
 			onChange={props.onChange}  >
-			{props.options.map((option, index, options) => 
+			{props.options.map((option, index) => 
 			<SelectOption key = {index.toString()} 
 			option ={option} optionValue ={props.optionValues[index]} />)}
 		</select>
