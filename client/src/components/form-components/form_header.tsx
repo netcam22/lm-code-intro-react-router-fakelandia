@@ -1,7 +1,7 @@
 interface FormHeaderProps {
 	message: string;
-	success: boolean;
-	justTalked: boolean;
+	success: boolean | null;
+	justTalked: boolean | null;
 }
 const FormHeader: React.FC<FormHeaderProps> = ({message, success, justTalked}) => 
 	{

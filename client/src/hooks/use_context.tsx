@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { MisdemeanourContext, MisdemeanourFilterContext } from "../components/misdemeanours/misdemeanour-container";
+import { MisdemeanourFilterContext } from "../components/misdemeanours/misdemeanour-container";
+import { MisdemeanourContext } from "../components/misdemeanours/misdemeanour-wrapper";
 
 export const useMisdemeanourContext = () => {
   const contextValue = useContext(MisdemeanourContext);
