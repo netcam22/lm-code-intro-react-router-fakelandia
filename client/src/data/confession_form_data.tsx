@@ -1,23 +1,8 @@
 import { MISDEMEANOURS } from "../../types/misdemeanours.types";
 export const MISDEMEANOUR_FORM_OPTONS = [...MISDEMEANOURS, "I just want to talk"];
 export type MisdemeanourFormKind = (typeof MISDEMEANOUR_FORM_OPTONS)[number];
-
-export interface FormInputObject {
-	id: string;
-    title: string;
-    role: string;
-    regex: Array<RegExp>;
-    errorMessage: Array<string>;
-}
-export interface FormSelectInputObject extends FormInputObject {
-    options: Array<string>
-}
-export interface FormTextAreaInputObject extends FormInputObject {
-    size: {
-		rows: number;
-		cols: number;
-	}
-}
+import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
+from "../../types/form.types";
 
 export type InitialValue = {[key: string]: string};
 

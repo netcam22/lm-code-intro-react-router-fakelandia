@@ -4,9 +4,10 @@ import {TextInput} from './text_input';
 import { SelectInput } from './select-input';
 import { TextAreaInput } from './text_area_input';
 import { SubmitButton } from './submit_button';
-import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, initialValues,
-FormInputObject, FormSelectInputObject, FormTextAreaInputObject}
+import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, initialValues} 
 from "./../../data/confession_form_data";
+import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
+from '../../../types/form.types';
 import { validateInput } from "./../../validate/validate_input";
 export interface InputProps {
 	title: string;
