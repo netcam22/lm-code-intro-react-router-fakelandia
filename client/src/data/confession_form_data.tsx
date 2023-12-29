@@ -30,7 +30,7 @@ export const formSelectInput: Array<FormSelectInputObject> = [
 export const formTextAreaInput: Array<FormTextAreaInputObject> = [
     {
     id: "input-3",
-    title: "Confession",
+    title: "Your Confession",
     role: "confession",
     regex: [/^.{10,500}$/gi],
     errorMessage: ["must be between 10 and 500 characters"],

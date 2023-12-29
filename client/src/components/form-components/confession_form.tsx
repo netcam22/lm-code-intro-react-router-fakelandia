@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, MouseEvent} from 'react';
-import W12MHeader from './confession_form_header';
+import ConfessionFormHeader from './confession_form_header';
 import {TextInput} from './text_input';
 import { SelectInput } from './select-input';
 import { TextAreaInput } from './text_area_input';
@@ -77,9 +77,9 @@ const ConfessionForm = () => {
 	}
 
 	return (
-		<section className='w12MForm'>
-			<W12MHeader />
-			<div className = "col-50-left">
+		<section className='form'>
+			<ConfessionFormHeader />
+			<div className = "col-100-left">
 
 			{formTextInput.map((field: FormInputObject, i: number) => 
 
@@ -123,8 +123,8 @@ const ConfessionForm = () => {
 			}
 
 			<SubmitButton 
-			buttonText = "Submit Application" 
-			id="submitAlienDataButton" 
+			buttonText = "Confess" 
+			id="submitConfessionButton" 
 			role="submitButton"
 			submitted={submitted}
 			onSubmitHandler = {handleSubmit}

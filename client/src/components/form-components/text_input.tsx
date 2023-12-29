@@ -9,9 +9,10 @@ export interface TextInputProps extends InputProps {
 export const TextInput : React.FC<TextInputProps> = (props) => {
 
 return (
-    <>	<label htmlFor={props.role}>{props.title}</label>
+    <>	<label className='form__label'
+	htmlFor={props.role}>{props.title}</label>
         <input id ={props.role}
-			className = "valid"
+			className='form__input'
 					type ='text'
 					value = {props.value}
 					onChange={props.onChange} 

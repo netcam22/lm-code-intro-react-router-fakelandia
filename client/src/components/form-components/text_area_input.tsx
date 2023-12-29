@@ -14,8 +14,10 @@ export const TextAreaInput : React.FC<TextAreaInputProps> = (props) => {
 
 	return (
     <>
-        <label htmlFor={props.role}>{props.title}</label>
+        <label className='form__label'
+		htmlFor={props.role}>{props.title}</label>
         <textarea id={props.role}
+		className='form__input'
 					rows={props.size.rows}
 					cols={props.size.cols}
 					value={props.value}

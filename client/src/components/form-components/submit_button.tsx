@@ -21,7 +21,7 @@ export const SubmitButton : React.FC<SubmitButtonProps> =
 	const disableButton = submitted? manageSubmitButton(errorMessages): false;
 	return (
 	<button
-	className = {role}
+	className = "form__button"
 	id={id} 
 	// eslint-disable-next-line jsx-a11y/aria-role
 	role={id} 
