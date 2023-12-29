@@ -24,7 +24,9 @@ const MisdemeanourItem : React.FC<MisdemeanourItemProps> = ({citizenId, misdemea
         <div className = "cell">Date: {date}</div>
         <div className = "cell">Misdemeanour: 
         {MISDEMEANOUR_ICONS[misdemeanour]} {misdemeanour}</div>
-        <div className = "cell"><img src={picsumUrl+indexValue} /></div>
+        <div className = "cell">
+            <img className = "cell__image" src={picsumUrl+indexValue} />
+        </div>
     </>
     )
 }

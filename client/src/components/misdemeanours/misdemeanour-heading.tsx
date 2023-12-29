@@ -6,7 +6,7 @@ interface MisdemeanourTableHeadingProps {
 const MisdemeanourTableHeading : React.FC<MisdemeanourTableHeadingProps> = ({heading}) => {
     return (
     <>
-        <div className = "cell cell--heading">{heading}</div>
+        <div className = "cell cell__heading">{heading}</div>
     </>
     )
     }
