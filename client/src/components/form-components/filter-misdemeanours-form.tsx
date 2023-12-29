@@ -11,7 +11,7 @@ export interface InputProps {
 	role: string;
 	value: string;
 	errorMessage: string;
-	submitted? : boolean;
+	attempted: boolean;
 }
 
 const FilterMisdemeanoursForm = () => {
@@ -68,6 +68,8 @@ const FilterMisdemeanoursForm = () => {
 				onChange={handleChange} 
 				role = {field.role} 
 				options = {field.options}
+				optionValues = {field.optionValues}
+				attempted = {true}
 				/>)
 			}
 		</section>	

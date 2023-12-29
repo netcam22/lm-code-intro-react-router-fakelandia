@@ -1,35 +1,68 @@
 import { useState, ChangeEvent, MouseEvent} from 'react';
-import ConfessionFormHeader from './confession_form_header';
+import FormHeader from './form_header';
 import {TextInput} from './text_input';
 import { SelectInput } from './select-input';
 import { TextAreaInput } from './text_area_input';
 import { SubmitButton } from './submit_button';
-import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, initialValues} 
+import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, 
+	initialValues, inputInformation} 
 from "./../../data/confession_form_data";
 import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
 from '../../../types/form.types';
 import { validateInput } from "./../../validate/validate_input";
+
 export interface InputProps {
 	title: string;
 	role: string;
 	value: string;
 	errorMessage: string;
-	submitted: boolean;
+	attempted: boolean;
 }
 
 const ConfessionForm = () => {
 	
 	const [input, setInput] = useState({...initialValues});
 	const [errors, setErrors] = useState({...initialValues});
-	const [submitted, setSubmitted] = useState(false);
+	const [attempted, setAttempted] = useState(false);
+	const [inputDetails, setInputDetails] = useState({...inputInformation});
 
-	function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
-		if (!submitted) {
+	async function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
+		event.preventDefault();
+		if (!attempted) {
 			saveAllErrors();
-			setSubmitted(true);
-		}		
+			setAttempted(true);
+		}
+		if (attempted || formHasNoErrors()) {
+		try {
+			const response = await fetch("http://localhost:8080/api/confess", {
+			method: "POST", 
+			headers: {
+				"Content-Type": "application/json",
+			}, 
+			body : JSON.stringify({
+				subject :input.subject, 
+				reason: input.reason, 
+				details: input.details
+			}),
+			});
+			if (response.ok) {
+			const formResponse = await response.json();
+			setInputDetails( 
+				{messages: [formResponse.message],
+					success: formResponse.success,
+					justTalked: formResponse.justTalked});
+			//setData((data: Array<MisdemeanourObject>) => [...data, formData]);
+			}  
+		} 
+		catch (error) {
+			console.log(error)
+		}
+	}
 	}
 
+	function formHasNoErrors() {
+		return Object.values(errors).reduce((acc, error) => acc+error, "") === "";
+	}
 
 	function setInputError(dataRole: string, errorString: string) {
 		setErrors((currentErrors) =>
@@ -78,7 +111,10 @@ const ConfessionForm = () => {
 
 	return (
 		<section className='form'>
-			<ConfessionFormHeader />
+			{inputDetails.messages.map((message: string, index: number) => 
+			<FormHeader key = {index.toString()} message = {message}
+			success = {inputDetails.success} justTalked = {inputDetails.justTalked}/>
+			)}
 			<div className = "col-80-centre">
 
 			{formTextInput.map((field: FormInputObject) => 
@@ -89,7 +125,7 @@ const ConfessionForm = () => {
 				errorMessage = {errors[field.role]}
 				value={input[field.role]} 
 				onChange={handleChange} 
-				submitted={submitted}
+				attempted={attempted}
 				role = {field.role} 
 			/>)
 			}
@@ -102,9 +138,10 @@ const ConfessionForm = () => {
 				errorMessage = {errors[field.role]}
 				value={input[field.role]} 
 				onChange={handleChange} 
-				submitted={submitted} 
+				attempted={attempted} 
 				role = {field.role} 
 				options = {field.options}
+				optionValues = {field.optionValues}
 				/>)
 			}
 
@@ -116,7 +153,7 @@ const ConfessionForm = () => {
 				errorMessage = {errors[field.role]}
 				value={input[field.role]} 
 				onChange={handleChange} 
-				submitted={submitted} 
+				attempted={attempted} 
 				role = {field.role} 
 				size = {field.size}
 			/>)
@@ -126,7 +163,7 @@ const ConfessionForm = () => {
 			buttonText = "Confess" 
 			id="submitConfessionButton" 
 			role="submitButton"
-			submitted={submitted}
+			attempted={attempted}
 			onSubmitHandler = {handleSubmit}
 			errorMessages = {errors}
 			/>

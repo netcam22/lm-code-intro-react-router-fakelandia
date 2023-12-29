@@ -4,6 +4,13 @@ import { isError } from '../helpers/is_error';
 export const useFetch = <T>(endPoint:string, dataProperty:string | null, 
 	data: Array<T>, setData: React.Dispatch<React.SetStateAction<Array<T>>>)=> {
 
+	function addIndex(jsonData: Array<T>)  {
+	const indexedData = jsonData.map((item: T, index: number) => {
+			return {...item, indexValue : index.toString()}
+		});
+		setData(indexedData);
+	}
+
     useEffect(() => {
 		let rendered = false;
 		const fetchData = async () => {
@@ -12,8 +19,9 @@ export const useFetch = <T>(endPoint:string, dataProperty:string | null,
 				if (response.status === 200) {
 					const json = await response.json();
 					if (!rendered) {
-					dataProperty !== null? setData(json[dataProperty])
-					: setData([...data, json]);
+					const jsonData = dataProperty !== null? 
+					json[dataProperty]: json;
+					addIndex(jsonData);
 					}
 				}
 			} catch (error) {
@@ -25,12 +33,6 @@ export const useFetch = <T>(endPoint:string, dataProperty:string | null,
 		return () => {
 			rendered = true;
 		};
-		}
-		else {
-			const myNewData: Array<T> = data.map((item: T, index: number) => {
-				return {...item, indexValue : index.toString()}
-			});
-			setData(myNewData);
 		}
 	});
 };

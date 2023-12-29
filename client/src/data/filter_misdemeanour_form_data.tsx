@@ -13,7 +13,8 @@ export const formSelectInput: Array<FormSelectInputObject> = [
     role: "filterMisdemeanours",
     regex: [/^all{1}|rudeness{1}|vegetables{1}|lift{1}|united{1}$/],
     errorMessage: ['error: invalid selection'],
-    options: [...MISDEMEANOUR_FILTERS]
+    options: [...MISDEMEANOUR_FILTERS],
+    optionValues: [...MISDEMEANOUR_FILTERS]
     }
 ];
 

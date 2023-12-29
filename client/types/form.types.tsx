@@ -7,7 +7,8 @@ export interface FormInputObject {
     errorMessage: Array<string>;
 }
 export interface FormSelectInputObject extends FormInputObject {
-    options: Array<string>
+    options: Array<string>;
+    optionValues: Array<string>
 }
 export interface FormTextAreaInputObject extends FormInputObject {
     size: {
