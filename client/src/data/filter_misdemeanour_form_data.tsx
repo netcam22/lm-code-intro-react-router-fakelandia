@@ -1,17 +1,8 @@
 import { MISDEMEANOURS } from "../../types/misdemeanours.types";
-export const MISDEMEANOUR_FILTERS = ["all", ...MISDEMEANOURS]
+export const MISDEMEANOUR_FILTERS = ["all", ...MISDEMEANOURS];
 export type MisdemeanourFilterKind = (typeof MISDEMEANOUR_FILTERS)[number];
-
-export interface FormInputObject {
-	id: string;
-    title: string;
-    role: string;
-    regex: Array<RegExp>;
-    errorMessage: Array<string>;
-}
-export interface FormSelectInputObject extends FormInputObject {
-    options: Array<string>
-}
+import {FormSelectInputObject} 
+from "../../types/form.types";
 
 export type InitialValue = {[key: string]: MisdemeanourFilterKind};
 

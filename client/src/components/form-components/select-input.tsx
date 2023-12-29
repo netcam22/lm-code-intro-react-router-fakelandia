@@ -11,8 +11,10 @@ export const SelectInput : React.FC<SelectInputProps> = (props) => {
 
 	return (
     <>
-        <label htmlFor={props.role}>{props.title}</label>
-        <select id={props.role} value={props.value} 
+        <label className='form__label'
+		htmlFor={props.role}>{props.title}</label>
+        <select className='form__input'
+			id={props.role} value={props.value} 
 			onChange={props.onChange}  >
 			{props.options.map((option, index) => 
 			<SelectOption key = {index.toString()} optionValue ={option} />)}

@@ -1,7 +1,8 @@
 import { useState, ChangeEvent} from 'react';
 import { SelectInput } from './select-input';
-import { FormSelectInputObject, formSelectInput, 
-	InitialValue, errorValues } from '../../data/filter_misdemeanour_form_data';
+import { formSelectInput, InitialValue, errorValues } 
+from '../../data/filter_misdemeanour_form_data';
+import { FormSelectInputObject } from '../../../types/form.types';
 import { validateInput } from '../../validate/validate_input';
 import { useMisdemeanourFilterContext } from '../../hooks/use_context';
 
@@ -10,6 +11,7 @@ export interface InputProps {
 	role: string;
 	value: string;
 	errorMessage: string;
+	submitted? : boolean;
 }
 
 const FilterMisdemeanoursForm = () => {

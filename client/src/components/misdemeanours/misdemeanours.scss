@@ -21,28 +21,41 @@
   }
 
   .cell {
-    padding: 2%;
+    padding: 0;
     margin: 0;
     position: sticky;
     border: 1px solid black;
     text-align: center;
+    contain: content;
 
-    &--heading {
+    &__heading {
       background-color: $silver;
       font-size: 1rem;
       font-weight: bold;
+      padding: 1%;
+      display: none;
+
+      @include respond-small {
+        font-size: 1.1rem;
+      }
+  
+      @include respond-medium {
+        font-size: 1rem;
+        padding: 2%;
+        display: block;
+      }
+  
+      @include respond-large{
+        font-size: 1.2rem;
+      }
     }
 
-    @include respond-small {
-      font-size: 1.1rem;
-    }
-
-    @include respond-medium {
-      font-size: 1.2rem;
-    }
-
-    @include respond-large{
-      font-size: 1.3rem;
+    &__image {
+      margin: 1% 0 0 0;
+      
+      @include respond-medium {
+        margin-top: 2%;
+      }
     }
 
   }
