@@ -10,6 +10,7 @@ export interface InputProps {
 	role: string;
 	value: string;
 	errorMessage: string;
+	submitted? : boolean;
 }
 
 const FilterMisdemeanoursForm = () => {

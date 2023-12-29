@@ -1,5 +1,5 @@
 import { MISDEMEANOURS } from "../../types/misdemeanours.types";
-export const MISDEMEANOUR_FILTERS = ["all", ...MISDEMEANOURS]
+export const MISDEMEANOUR_FILTERS = ["all", ...MISDEMEANOURS];
 export type MisdemeanourFilterKind = (typeof MISDEMEANOUR_FILTERS)[number];
 
 export interface FormInputObject {
