@@ -5,22 +5,23 @@ import ShowLoading from "../loading/show-loading";
 
 const MisdemeanourList : React.FC = () => {
 
-const misdemeanourData = useMisdemeanourContext();
-const [selectedFilter, setSelectedFilter] = useMisdemeanourFilterContext();
+const [misdemeanourData] = useMisdemeanourContext();
+
+const [selectedFilter] = useMisdemeanourFilterContext();
 
 return (
         <>
-        {misdemeanourData.length === 0 && 
+        {misdemeanourData && misdemeanourData.length === 0 && 
 	<ShowLoading /> }
 
-        {selectedFilter && selectedFilter.filterMisdemeanours === "all" &&
+        {misdemeanourData && selectedFilter && selectedFilter.filterMisdemeanours === "all" &&
         misdemeanourData.map((item: MisdemeanourObject) =>
         (<MisdemeanourItem key={item.citizenId} citizenId={item.citizenId} 
         misdemeanour = {item.misdemeanour} date = {item.date}
         indexValue = {item.indexValue} />)
         )}
 
-        {selectedFilter && selectedFilter.filterMisdemeanours !== "all" &&
+        {misdemeanourData && selectedFilter && selectedFilter.filterMisdemeanours !== "all" &&
         misdemeanourData.filter((row: MisdemeanourObject) => row.misdemeanour 
         === selectedFilter.filterMisdemeanours).map((item: MisdemeanourObject) =>
         (<MisdemeanourItem key={item.citizenId} citizenId={item.citizenId} 

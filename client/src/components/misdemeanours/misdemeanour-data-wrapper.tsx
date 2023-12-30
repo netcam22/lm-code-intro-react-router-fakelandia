@@ -4,7 +4,10 @@ import { Router } from "../router/router";
 
 import { MisdemeanourObject} from "../../data/misdemeanour_data";
 
-export const MisdemeanourContext = createContext<Array<MisdemeanourObject>>([]);
+export type MisdemeanourContextType = [Array<MisdemeanourObject>, 
+        React.Dispatch<React.SetStateAction<Array<MisdemeanourObject>>>] | [];
+
+export const MisdemeanourContext = createContext<MisdemeanourContextType>([]);
 
 export const MisdemeanourDataWrapper : React.FC = () => {
 
@@ -16,7 +19,7 @@ useFetch<MisdemeanourObject>(url, "misdemeanours", misdemeanourData, setMisdemea
 
 return (
 <>
-        <MisdemeanourContext.Provider value={misdemeanourData}>
+        <MisdemeanourContext.Provider value={[misdemeanourData, setMisdemeanourData]}>
         <Router/>
         </MisdemeanourContext.Provider>
 </>
