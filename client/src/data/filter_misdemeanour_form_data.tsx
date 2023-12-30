@@ -19,4 +19,3 @@ export const formSelectInput: Array<FormSelectInputObject> = [
 ];
 
 export const initialValues: SelectOptions = formSelectInput.reduce((acc, field) => {return {...acc, [field.role]: "all"}}, {});
-export const errorValues: SelectOptions = formSelectInput.reduce((acc, field) => {return {...acc, [field.role]: ""}}, {});

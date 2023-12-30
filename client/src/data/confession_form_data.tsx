@@ -2,10 +2,8 @@ import { MISDEMEANOURS } from "../../types/misdemeanours.types";
 export const MISDEMEANOUR_FORM_OPTIONS = ["", ...MISDEMEANOURS, "I just want to talk"];
 export const MISDEMEANOUR_FORM_OPTION_VALUES = ["", ...MISDEMEANOURS, "just-talk"];
 export type MisdemeanourFormKind = (typeof MISDEMEANOUR_FORM_OPTIONS)[number];
-import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
+import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject, FormValues} 
 from "../../types/form.types";
-
-export type InitialValue = {[key: string]: string};
 
 export const confessionFormMessages = {
 messages: ["It's very difficult to catch people committing misdemeanours so we appreciate it when citizens confess to us directly.", 
@@ -48,5 +46,5 @@ export const formTextAreaInput: Array<FormTextAreaInputObject> = [
 ];
 
 export const formDataArray = [...formTextInput, ...formSelectInput, ...formTextAreaInput];
-export const initialValues: InitialValue = 
+export const initialValues: FormValues = 
 formDataArray.reduce((acc, field) => {return {...acc, [field.role]: ""}}, {});
