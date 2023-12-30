@@ -8,10 +8,10 @@ import { formTextInput, formSelectInput, formTextAreaInput, formDataArray,
 	initialValues, confessionFormMessages} 
 from "../../data/confession_form_data";
 import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
-from '../../../types/form.types';
+from '../../types/form.types';
 import { useMisdemeanourContext } from "../../hooks/use_context";
-import { MisdemeanourObject } from '../../../types/misdemeanour_client_types';
-import { MisdemeanourKind } from '../../../types/misdemeanours.types';
+import { MisdemeanourObject } from '../../types/misdemeanour_client_types';
+import { MisdemeanourKind } from '../../types/misdemeanours.types';
 import { validateInputField } from '../../validate/validate_input_field';
 
 const ConfessionForm = () => {
@@ -66,7 +66,7 @@ const ConfessionForm = () => {
 		const newRow: MisdemeanourObject = 
 			{citizenId: Math.floor(len + Math.random() * 37 * Math.random() * 967), 
 				misdemeanour: reason, 
-				date: new Date().toLocaleDateString(), 
+				date: new Date().toLocaleDateString("en-GB"), 
 				indexValue: len.toString()};
 					setMisdemeanourData((currentData: Array<MisdemeanourObject>) => 
 					[...currentData, newRow]);

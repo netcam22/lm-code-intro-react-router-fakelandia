@@ -2,7 +2,7 @@ import { ChangeEvent} from 'react';
 import { SelectInput } from '../form-components/select-input';
 import { formSelectInput} 
 from '../../data/filter_misdemeanour_form_data';
-import { FormSelectInputObject} from '../../../types/form.types';
+import { FormSelectInputObject} from '../../types/form.types';
 import { useMisdemeanourFilterContext } from '../../hooks/use_context';
 import { SelectOptions } from '../../data/filter_misdemeanour_form_data';
 

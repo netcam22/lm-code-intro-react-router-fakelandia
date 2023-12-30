@@ -1,5 +1,5 @@
-import { MISDEMEANOUR_VIEWS } from "../../../types/misdemeanour_client_types";
-import {MisdemeanourKind} from "../../../types/misdemeanours.types";
+import { MISDEMEANOUR_VIEWS } from "../../types/misdemeanour_client_types";
+import {MisdemeanourKind} from "../../types/misdemeanours.types";
 
 type MisdemeanourItemProps = {
     citizenId: number,

@@ -1,8 +1,8 @@
-import { MISDEMEANOURS } from "../../types/misdemeanours.types";
+import { MISDEMEANOURS } from "../types/misdemeanours.types";
 export const MISDEMEANOUR_FILTERS = ["all", ...MISDEMEANOURS];
 export type MisdemeanourFilterKind = (typeof MISDEMEANOUR_FILTERS)[number];
 import {FormSelectInputObject} 
-from "../../types/form.types";
+from "../types/form.types";
 
 export type SelectOptions = {[key: string]: MisdemeanourFilterKind};
 

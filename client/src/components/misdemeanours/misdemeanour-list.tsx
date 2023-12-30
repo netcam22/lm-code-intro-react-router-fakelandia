@@ -1,6 +1,6 @@
 import MisdemeanourItem from "./misdemeanour-item";
 import { useMisdemeanourContext, useMisdemeanourFilterContext} from "../../hooks/use_context";
-import { MisdemeanourObject } from "../../../types/misdemeanour_client_types";
+import { MisdemeanourObject } from "../../types/misdemeanour_client_types";
 import ShowLoading from "../loading/show-loading";
 
 const MisdemeanourList : React.FC = () => {
