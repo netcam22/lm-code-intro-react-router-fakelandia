@@ -1,4 +1,4 @@
-import { Misdemeanour} from "../../types/misdemeanours.types";
+import { Misdemeanour} from "./misdemeanours.types";
 export interface MisdemeanourObject extends Misdemeanour {
     indexValue: string,
 }

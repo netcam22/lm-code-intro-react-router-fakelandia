@@ -11,7 +11,7 @@ import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject}
 from '../../../types/form.types';
 import { validateInput } from "../../validate/validate_input";
 import { useMisdemeanourContext } from "../../hooks/use_context";
-import { MisdemeanourObject } from '../../data/misdemeanour_data';
+import { MisdemeanourObject } from '../../../types/misdemeanour_client_types';
 import { MisdemeanourKind } from '../../../types/misdemeanours.types';
 
 const ConfessionForm = () => {
