@@ -12,6 +12,7 @@ from '../../../types/form.types';
 import { validateInput } from "../../validate/validate_input";
 import { useMisdemeanourContext } from "../../hooks/use_context";
 import { MisdemeanourObject } from '../../data/misdemeanour_data';
+import { MisdemeanourKind } from '../../../types/misdemeanours.types';
 
 const ConfessionForm = () => {
 
@@ -48,19 +49,28 @@ const ConfessionForm = () => {
 				success: formResponse.success,
 				justTalked: formResponse.justTalked}
 			);
-			console.log(misdemeanourData);
-			const dummyData: MisdemeanourObject = 
-			{citizenId: 10000, misdemeanour: 'rudeness', date: '12/30/2023', indexValue: '10'};
-				if (misdemeanourData && setMisdemeanourData) {
-					setMisdemeanourData((currentData: Array<MisdemeanourObject>) => 
-					[...currentData, dummyData]);
-				}
+			if (input.reason !== "just-talk") {
+				addDataToMisdemeanourList(input.reason as MisdemeanourKind);
+			}
 			}  
 		} 
 		catch (error) {
 			console.log(error)
 		}
 	}
+	}
+
+	function addDataToMisdemeanourList(reason: MisdemeanourKind) {
+		if (misdemeanourData && setMisdemeanourData) {
+			const len = misdemeanourData.length;
+		const newRow: MisdemeanourObject = 
+			{citizenId: Math.floor(len + Math.random() * 37 * Math.random() * 967), 
+				misdemeanour: reason, 
+				date: new Date().toLocaleDateString(), 
+				indexValue: len.toString()};
+					setMisdemeanourData((currentData: Array<MisdemeanourObject>) => 
+					[...currentData, newRow]);
+			}
 	}
 
 	function formHasNoErrors() {
