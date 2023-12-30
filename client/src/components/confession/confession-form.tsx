@@ -5,7 +5,7 @@ import { SelectInput } from '../form-components/select-input';
 import { TextAreaInput } from '../form-components/text-area-input';
 import { SubmitButton } from '../form-components/submit-button';
 import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, 
-	initialValues, inputInformation} 
+	initialValues, confessionFormMessages} 
 from "../../data/confession_form_data";
 import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
 from '../../../types/form.types';
@@ -21,7 +21,7 @@ const ConfessionForm = () => {
 	const [input, setInput] = useState({...initialValues});
 	const [errors, setErrors] = useState({...initialValues});
 	const [attempted, setAttempted] = useState(false);
-	const [inputDetails, setInputDetails] = useState({...inputInformation});
+	const [formMessages, setFormMessages] = useState({...confessionFormMessages});
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
@@ -44,7 +44,7 @@ const ConfessionForm = () => {
 			});
 			if (response.ok) {
 			const formResponse = await response.json();
-			setInputDetails( 
+			setFormMessages( 
 				{messages: [formResponse.message],
 				success: formResponse.success,
 				justTalked: formResponse.justTalked}
@@ -124,9 +124,9 @@ const ConfessionForm = () => {
 
 	return (
 		<form className='form' onSubmit = {handleSubmit}>
-			{inputDetails.messages.map((message: string, index: number) => 
+			{formMessages.messages.map((message: string, index: number) => 
 			<FormHeader key = {index.toString()} message = {message}
-			success = {inputDetails.success} justTalked = {inputDetails.justTalked}/>
+			success = {formMessages.success} justTalked = {formMessages.justTalked}/>
 			)}
 			<fieldset className = "fieldset">
 
