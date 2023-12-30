@@ -3,9 +3,9 @@ import { SelectInput } from '../form-components/select-input';
 import { formSelectInput, errorValues } 
 from '../../data/filter_misdemeanour_form_data';
 import { FormSelectInputObject} from '../../../types/form.types';
-import { validateInput } from '../../validate/validate_input';
 import { useMisdemeanourFilterContext } from '../../hooks/use_context';
 import { InitialValue } from '../../data/confession_form_data';
+import { validateInputField } from '../../validate/validate_input_field';
 
 const FilterMisdemeanoursForm = () => {
 
@@ -28,14 +28,6 @@ const FilterMisdemeanoursForm = () => {
 					[dataRole]: errorString,
 				})
 		)
-	}
-
-	function validateInputField(title:string, regex: Array<RegExp>, value: string, 
-		message: Array<string>) {
-		const errorMessage  = validateInput(title, regex, value, message)
-				.reduce((acc: string, message: string) => acc+"; "+message, "")
-				.replace("; ", "");
-		return errorMessage;
 	}
 
 	function handleChange(event: ChangeEvent<HTMLSelectElement>) {
