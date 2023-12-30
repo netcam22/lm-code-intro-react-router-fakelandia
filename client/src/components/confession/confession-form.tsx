@@ -1,23 +1,15 @@
-import { useState, ChangeEvent, MouseEvent} from 'react';
-import FormHeader from './form_header';
-import {TextInput} from './text_input';
-import { SelectInput } from './select-input';
-import { TextAreaInput } from './text_area_input';
-import { SubmitButton } from './submit_button';
+import { useState, ChangeEvent, FormEvent} from 'react';
+import FormHeader from '../form-components/form-header';
+import {TextInput} from '../form-components/text-input';
+import { SelectInput } from '../form-components/select-input';
+import { TextAreaInput } from '../form-components/text-area-input';
+import { SubmitButton } from '../form-components/submit-button';
 import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, 
 	initialValues, inputInformation} 
-from "./../../data/confession_form_data";
+from "../../data/confession_form_data";
 import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
 from '../../../types/form.types';
-import { validateInput } from "./../../validate/validate_input";
-
-export interface InputProps {
-	title: string;
-	role: string;
-	value: string;
-	errorMessage: string;
-	attempted: boolean;
-}
+import { validateInput } from "../../validate/validate_input";
 
 const ConfessionForm = () => {
 	
@@ -26,7 +18,7 @@ const ConfessionForm = () => {
 	const [attempted, setAttempted] = useState(false);
 	const [inputDetails, setInputDetails] = useState({...inputInformation});
 
-	async function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
+	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		if (!attempted) {
 			saveAllErrors();
@@ -110,12 +102,12 @@ const ConfessionForm = () => {
 	}
 
 	return (
-		<section className='form'>
+		<form className='form' onSubmit = {handleSubmit}>
 			{inputDetails.messages.map((message: string, index: number) => 
 			<FormHeader key = {index.toString()} message = {message}
 			success = {inputDetails.success} justTalked = {inputDetails.justTalked}/>
 			)}
-			<div className = "col-80-centre">
+			<fieldset className = "fieldset">
 
 			{formTextInput.map((field: FormInputObject) => 
 
@@ -161,15 +153,14 @@ const ConfessionForm = () => {
 
 			<SubmitButton 
 			buttonText = "Confess" 
-			id="submitConfessionButton" 
-			role="submitButton"
+			id="submitButton" 
+			role="submitConfessionButton"
 			attempted={attempted}
-			onSubmitHandler = {handleSubmit}
 			errorMessages = {errors}
 			/>
-			</div>
+			</fieldset>
 
-		</section>	
+		</form>	
 	);
 };
 export default ConfessionForm;

@@ -4,7 +4,7 @@ export type MisdemeanourFilterKind = (typeof MISDEMEANOUR_FILTERS)[number];
 import {FormSelectInputObject} 
 from "../../types/form.types";
 
-export type InitialValue = {[key: string]: MisdemeanourFilterKind};
+export type SelectOptions = {[key: string]: MisdemeanourFilterKind};
 
 export const formSelectInput: Array<FormSelectInputObject> = [
     {
@@ -18,5 +18,5 @@ export const formSelectInput: Array<FormSelectInputObject> = [
     }
 ];
 
-export const initialValues: InitialValue = formSelectInput.reduce((acc, field) => {return {...acc, [field.role]: "all"}}, {});
-export const errorValues: InitialValue = formSelectInput.reduce((acc, field) => {return {...acc, [field.role]: ""}}, {});
+export const initialValues: SelectOptions = formSelectInput.reduce((acc, field) => {return {...acc, [field.role]: "all"}}, {});
+export const errorValues: SelectOptions = formSelectInput.reduce((acc, field) => {return {...acc, [field.role]: ""}}, {});

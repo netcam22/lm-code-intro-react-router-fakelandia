@@ -1,30 +1,33 @@
 import MisdemeanourItem from "./misdemeanour-item";
-import { useMisdemeanourContext} from "../../hooks/use_context";
+import { useMisdemeanourContext, useMisdemeanourFilterContext} from "../../hooks/use_context";
 import { MisdemeanourObject } from "../../data/misdemeanour_data";
-import ShowLoading from "../loading/show_loading";
+import ShowLoading from "../loading/show-loading";
 
-interface MisdemeanourListProps {
- filterSelected: string;
-}
-
-const MisdemeanourList : React.FC<MisdemeanourListProps> = ({filterSelected}) => {
+const MisdemeanourList : React.FC = () => {
 
 const misdemeanourData = useMisdemeanourContext();
-const dataToDisplay = filterSelected === "all" ? misdemeanourData
-: misdemeanourData.filter((row: MisdemeanourObject) => row.misdemeanour === filterSelected);
+const [selectedFilter, setSelectedFilter] = useMisdemeanourFilterContext();
 
 return (
         <>
         {misdemeanourData.length === 0 && 
 	<ShowLoading /> }
 
-        {dataToDisplay.map((item: MisdemeanourObject) =>
+        {selectedFilter && selectedFilter.filterMisdemeanours === "all" &&
+        misdemeanourData.map((item: MisdemeanourObject) =>
+        (<MisdemeanourItem key={item.citizenId} citizenId={item.citizenId} 
+        misdemeanour = {item.misdemeanour} date = {item.date}
+        indexValue = {item.indexValue} />)
+        )}
+
+        {selectedFilter && selectedFilter.filterMisdemeanours !== "all" &&
+        misdemeanourData.filter((row: MisdemeanourObject) => row.misdemeanour 
+        === selectedFilter.filterMisdemeanours).map((item: MisdemeanourObject) =>
         (<MisdemeanourItem key={item.citizenId} citizenId={item.citizenId} 
         misdemeanour = {item.misdemeanour} date = {item.date}
         indexValue = {item.indexValue} />)
         )}
         </>
-   
 )
 }
 

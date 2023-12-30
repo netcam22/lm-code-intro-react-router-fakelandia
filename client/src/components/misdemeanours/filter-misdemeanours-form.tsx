@@ -1,22 +1,15 @@
 import { useState, ChangeEvent} from 'react';
-import { SelectInput } from './select-input';
-import { formSelectInput, InitialValue, errorValues } 
+import { SelectInput } from '../form-components/select-input';
+import { formSelectInput, errorValues } 
 from '../../data/filter_misdemeanour_form_data';
-import { FormSelectInputObject } from '../../../types/form.types';
+import { FormSelectInputObject} from '../../../types/form.types';
 import { validateInput } from '../../validate/validate_input';
 import { useMisdemeanourFilterContext } from '../../hooks/use_context';
-
-export interface InputProps {
-	title: string;
-	role: string;
-	value: string;
-	errorMessage: string;
-	attempted: boolean;
-}
+import { InitialValue } from '../../data/confession_form_data';
 
 const FilterMisdemeanoursForm = () => {
 
-	const [input, setInput] = useMisdemeanourFilterContext();
+	const [selectedOption, setSelectedOption] = useMisdemeanourFilterContext();
 	const [errors, setErrors] = useState({...errorValues});
 
 	function saveInputErrors(dataRole: string, inputValue:string) {
@@ -47,8 +40,8 @@ const FilterMisdemeanoursForm = () => {
 
 	function handleChange(event: ChangeEvent<HTMLSelectElement>) {
 		event.preventDefault();
-		if (setInput) {
-		setInput((currentData: InitialValue) =>
+		if (setSelectedOption) {
+			setSelectedOption((currentData: InitialValue) =>
 			Object.assign({}, currentData, {
 				[event.target.id]: event.target.value,
 			})
@@ -58,13 +51,13 @@ const FilterMisdemeanoursForm = () => {
 	}
 
 	return (
-		<section className='filterMisdemeanoursForm'>
+		<form className='filterMisdemeanoursForm'>
 			{formSelectInput.map((field: FormSelectInputObject) => 
 				<SelectInput
 				key = {field.id}
 				title = {field.title} 
 				errorMessage = {errors[field.role]}
-				value={input? input[field.role]: "all"} 
+				value={selectedOption? selectedOption[field.role]: "all"} 
 				onChange={handleChange} 
 				role = {field.role} 
 				options = {field.options}
@@ -72,7 +65,7 @@ const FilterMisdemeanoursForm = () => {
 				attempted = {true}
 				/>)
 			}
-		</section>	
+		</form>	
 	);
 };
 export default FilterMisdemeanoursForm;
