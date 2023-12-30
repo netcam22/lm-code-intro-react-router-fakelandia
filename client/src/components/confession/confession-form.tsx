@@ -10,8 +10,12 @@ from "../../data/confession_form_data";
 import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
 from '../../../types/form.types';
 import { validateInput } from "../../validate/validate_input";
+import { useMisdemeanourContext } from "../../hooks/use_context";
+import { MisdemeanourObject } from '../../data/misdemeanour_data';
 
 const ConfessionForm = () => {
+
+	const [misdemeanourData, setMisdemeanourData] = useMisdemeanourContext();
 	
 	const [input, setInput] = useState({...initialValues});
 	const [errors, setErrors] = useState({...initialValues});
@@ -41,9 +45,16 @@ const ConfessionForm = () => {
 			const formResponse = await response.json();
 			setInputDetails( 
 				{messages: [formResponse.message],
-					success: formResponse.success,
-					justTalked: formResponse.justTalked});
-			//setData((data: Array<MisdemeanourObject>) => [...data, formData]);
+				success: formResponse.success,
+				justTalked: formResponse.justTalked}
+			);
+			console.log(misdemeanourData);
+			const dummyData: MisdemeanourObject = 
+			{citizenId: 10000, misdemeanour: 'rudeness', date: '12/30/2023', indexValue: '10'};
+				if (misdemeanourData && setMisdemeanourData) {
+					setMisdemeanourData((currentData: Array<MisdemeanourObject>) => 
+					[...currentData, dummyData]);
+				}
 			}  
 		} 
 		catch (error) {
