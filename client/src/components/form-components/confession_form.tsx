@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, MouseEvent} from 'react';
+import { useState, ChangeEvent, FormEvent} from 'react';
 import FormHeader from './form_header';
 import {TextInput} from './text_input';
 import { SelectInput } from './select-input';
@@ -26,7 +26,7 @@ const ConfessionForm = () => {
 	const [attempted, setAttempted] = useState(false);
 	const [inputDetails, setInputDetails] = useState({...inputInformation});
 
-	async function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
+	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		if (!attempted) {
 			saveAllErrors();
@@ -110,12 +110,12 @@ const ConfessionForm = () => {
 	}
 
 	return (
-		<section className='form'>
+		<form className='form' onSubmit = {handleSubmit}>
 			{inputDetails.messages.map((message: string, index: number) => 
 			<FormHeader key = {index.toString()} message = {message}
 			success = {inputDetails.success} justTalked = {inputDetails.justTalked}/>
 			)}
-			<div className = "col-80-centre">
+			<fieldset className = "fieldset">
 
 			{formTextInput.map((field: FormInputObject) => 
 
@@ -164,12 +164,11 @@ const ConfessionForm = () => {
 			id="submitConfessionButton" 
 			role="submitButton"
 			attempted={attempted}
-			onSubmitHandler = {handleSubmit}
 			errorMessages = {errors}
 			/>
-			</div>
+			</fieldset>
 
-		</section>	
+		</form>	
 	);
 };
 export default ConfessionForm;
