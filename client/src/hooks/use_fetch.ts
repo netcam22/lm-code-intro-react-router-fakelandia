@@ -4,7 +4,7 @@ import { isError } from '../helpers/is_error';
 export const useFetch = <T>(endPoint:string, dataProperty:string | null, 
 	data: Array<T>, setData: React.Dispatch<React.SetStateAction<Array<T>>>)=> {
 
-	function addIndex(jsonData: Array<T>)  {
+	function setIndexedData(jsonData: Array<T>)  {
 	const indexedData = jsonData.map((item: T, index: number) => {
 			return {...item, indexValue : index.toString()}
 		});
@@ -21,7 +21,7 @@ export const useFetch = <T>(endPoint:string, dataProperty:string | null,
 					if (!rendered) {
 					const jsonData = dataProperty !== null? 
 					json[dataProperty]: json;
-					addIndex(jsonData);
+					setIndexedData(jsonData);
 					}
 				}
 			} catch (error) {
