@@ -1,15 +1,15 @@
 import { useState, ChangeEvent, FormEvent} from 'react';
-import FormHeader from './form_header';
-import {TextInput} from './text_input';
-import { SelectInput } from './select-input';
-import { TextAreaInput } from './text_area_input';
-import { SubmitButton } from './submit_button';
+import FormHeader from '../form-components/form_header';
+import {TextInput} from '../form-components/text_input';
+import { SelectInput } from '../form-components/select-input';
+import { TextAreaInput } from '../form-components/text_area_input';
+import { SubmitButton } from '../form-components/submit_button';
 import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, 
 	initialValues, inputInformation} 
-from "./../../data/confession_form_data";
+from "../../data/confession_form_data";
 import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
 from '../../../types/form.types';
-import { validateInput } from "./../../validate/validate_input";
+import { validateInput } from "../../validate/validate_input";
 
 export interface InputProps {
 	title: string;

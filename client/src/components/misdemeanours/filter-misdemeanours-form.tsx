@@ -1,5 +1,5 @@
 import { useState, ChangeEvent} from 'react';
-import { SelectInput } from './select-input';
+import { SelectInput } from '../form-components/select-input';
 import { formSelectInput, InitialValue, errorValues } 
 from '../../data/filter_misdemeanour_form_data';
 import { FormSelectInputObject } from '../../../types/form.types';

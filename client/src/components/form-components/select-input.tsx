@@ -1,5 +1,5 @@
 import { ChangeEventHandler} from 'react';
-import { InputProps } from "./filter-misdemeanours-form";
+import { InputProps } from "../misdemeanours/filter-misdemeanours-form";
 import { SelectOption } from "./select-option";
 import { ErrorMessage } from './error-message';
 export interface SelectInputProps extends InputProps{

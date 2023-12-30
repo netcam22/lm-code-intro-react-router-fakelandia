@@ -3,7 +3,7 @@ import MisdemeanourList from "./misdemeanour-list";
 import ShowLoading from "./../loading/show_loading";
 import { MISDEMEANOUR_DATA_HEADINGS, MisdemeanourHeading} from "./../../data/misdemeanour_data";
 import MisdemeanourTableHeading from "./misdemeanour-heading";
-import FilterMisdemeanoursForm from "../form-components/filter-misdemeanours-form";
+import FilterMisdemeanoursForm from "./filter-misdemeanours-form";
 import { InitialValue, initialValues} from "../../data/filter_misdemeanour_form_data";
 import { useMisdemeanourContext } from "../../hooks/use_context";
 
