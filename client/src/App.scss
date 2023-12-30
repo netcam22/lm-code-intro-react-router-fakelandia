@@ -1,11 +1,11 @@
 @use "sass:map";
 @use 'sass:color';
 @import "./styles/global-styles.scss";
-@import "./components/layouts/main_layout.scss";
+@import "./components/layouts/main-layout.scss";
 @import "./components/header/header.scss";
 @import "./components/header/nav.scss";
 @import "./components/home/home.scss";
 @import "./components/misdemeanours/misdemeanours.scss";
 @import "./components/confession/confession.scss";
-@import "./components/confession/confession_form.scss";
+@import "./components/confession/confession-form.scss";
 @import "./components/footer/footer.scss";

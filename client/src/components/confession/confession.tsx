@@ -1,4 +1,4 @@
-import ConfessionForm from "./confession_form";
+import ConfessionForm from "./confession-form";
 
 const Confession : React.FC = () => 
 <section className = "confession">

@@ -1,9 +1,9 @@
 import { useState, ChangeEvent, FormEvent} from 'react';
-import FormHeader from '../form-components/form_header';
-import {TextInput} from '../form-components/text_input';
+import FormHeader from '../form-components/form-header';
+import {TextInput} from '../form-components/text-input';
 import { SelectInput } from '../form-components/select-input';
-import { TextAreaInput } from '../form-components/text_area_input';
-import { SubmitButton } from '../form-components/submit_button';
+import { TextAreaInput } from '../form-components/text-area-input';
+import { SubmitButton } from '../form-components/submit-button';
 import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, 
 	initialValues, inputInformation} 
 from "../../data/confession_form_data";

@@ -1,6 +1,6 @@
 import { useState, createContext } from "react";
 import MisdemeanourList from "./misdemeanour-list";
-import ShowLoading from "./../loading/show_loading";
+import ShowLoading from "../loading/show-loading";
 import { MISDEMEANOUR_DATA_HEADINGS, MisdemeanourHeading} from "./../../data/misdemeanour_data";
 import MisdemeanourTableHeading from "./misdemeanour-heading";
 import FilterMisdemeanoursForm from "./filter-misdemeanours-form";
