@@ -14,12 +14,12 @@ export const MisdemeanourFilterContext = createContext<FilterContextType>([]);
 export const MisdemeanourContainer : React.FC = () => {
 
 const misdemeanourData = useMisdemeanourContext();
-const [input, setInput] = useState({...initialValues});
+const [selectedOption, setSelectedOption] = useState({...initialValues});
 
 return (
 <>
     <h2 className = "title">Misdemeanours</h2>
-    {<MisdemeanourFilterContext.Provider value={[input, setInput]}>
+    {<MisdemeanourFilterContext.Provider value={[selectedOption, setSelectedOption]}>
     <FilterMisdemeanoursForm />
     </MisdemeanourFilterContext.Provider>}
     <section className = "container">
@@ -30,7 +30,7 @@ return (
 		<ShowLoading /> }
 
         {misdemeanourData.length > 0 &&
-        <MisdemeanourList filterSelected = {input.filterMisdemeanours}/>} 
+        <MisdemeanourList filterSelected = {selectedOption.filterMisdemeanours}/>} 
 
     </section>
 </>
