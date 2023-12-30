@@ -19,13 +19,17 @@ const [selectedFilter, setSelectedFilter] = useState({...initialValues});
 return (
 <>
     <h2 className = "title">Misdemeanours</h2>
+
     {<MisdemeanourFilterContext.Provider value={[selectedFilter, setSelectedFilter]}>
     <FilterMisdemeanoursForm />
     </MisdemeanourFilterContext.Provider>}
+
     <section className = "container">
+
     {MISDEMEANOUR_DATA_HEADINGS.map((heading: MisdemeanourHeading, index: number) => {
     return <MisdemeanourTableHeading key={index} heading={heading} />} 
     )}
+    
     {misdemeanourData.length === 0 && 
 	<ShowLoading /> }
     

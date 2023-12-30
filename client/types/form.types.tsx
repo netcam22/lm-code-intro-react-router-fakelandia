@@ -16,3 +16,10 @@ export interface FormTextAreaInputObject extends FormInputObject {
 		cols: number;
 	}
 }
+export interface InputProps {
+	title: string;
+	role: string;
+	value: string;
+	errorMessage: string;
+	attempted: boolean;
+}

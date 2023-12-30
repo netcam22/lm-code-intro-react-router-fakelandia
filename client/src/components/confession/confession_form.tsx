@@ -11,14 +11,6 @@ import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject}
 from '../../../types/form.types';
 import { validateInput } from "../../validate/validate_input";
 
-export interface InputProps {
-	title: string;
-	role: string;
-	value: string;
-	errorMessage: string;
-	attempted: boolean;
-}
-
 const ConfessionForm = () => {
 	
 	const [input, setInput] = useState({...initialValues});

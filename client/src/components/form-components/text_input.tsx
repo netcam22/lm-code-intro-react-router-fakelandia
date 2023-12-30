@@ -1,5 +1,5 @@
 import { ChangeEventHandler} from 'react';
-import { InputProps} from "../confession/confession_form";
+import { InputProps } from '../../../types/form.types';
 import { ErrorMessage } from "./error-message";
 
 export interface TextInputProps extends InputProps {
