@@ -1,5 +1,5 @@
 import { ChangeEventHandler } from "react";
-import { InputProps } from '../../../types/form.types';
+import { InputProps } from '../../types/form.types';
 import { ErrorMessage } from "./error-message";
 
 export interface TextAreaInputProps extends InputProps {

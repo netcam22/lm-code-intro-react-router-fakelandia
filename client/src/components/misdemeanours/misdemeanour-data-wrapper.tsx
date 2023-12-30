@@ -2,7 +2,7 @@ import { useState, createContext } from "react";
 import { useFetch} from "../../hooks/use_fetch";
 import { Router } from "../router/router";
 
-import { MisdemeanourObject} from "../../../types/misdemeanour_client_types";
+import { MisdemeanourObject} from "../../types/misdemeanour_client_types";
 
 export type MisdemeanourContextType = [Array<MisdemeanourObject>, 
         React.Dispatch<React.SetStateAction<Array<MisdemeanourObject>>>] | [];

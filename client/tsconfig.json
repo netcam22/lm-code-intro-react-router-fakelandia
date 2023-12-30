@@ -21,6 +21,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "types/misdemeanour_client_types.tsx"],
+  "include": ["src", "src/types/misdemeanour_client_types.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

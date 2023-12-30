@@ -18,7 +18,7 @@ export async function generateMisdemeanours(
 		misdemeanours.push({
 			citizenId: Math.floor(i + rand(37) * rand(967)),
 			misdemeanour: choose<MisdemeanourKind>([...MISDEMEANOURS]),
-			date: new Date().toLocaleDateString(),
+			date: new Date().toLocaleDateString("en-GB"),
 		});
 	}
 
