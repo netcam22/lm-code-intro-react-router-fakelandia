@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { it, expect} from 'vitest';
 import { ErrorMessage, ErrorMessageProps } from './error-message';
-import "@testing-library/jest-dom/extend-expect";
 
 it('will display message when passed through props', async () => {
 
