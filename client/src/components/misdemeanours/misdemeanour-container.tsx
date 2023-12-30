@@ -13,7 +13,8 @@ export const MisdemeanourFilterContext = createContext<FilterContextType>([]);
 
 export const MisdemeanourContainer : React.FC = () => {
 
-const misdemeanourData = useMisdemeanourContext();
+const [misdemeanourData] = useMisdemeanourContext();
+
 const [selectedFilter, setSelectedFilter] = useState({...initialValues});
 
 return (
@@ -30,10 +31,10 @@ return (
     return <MisdemeanourTableHeading key={index} heading={heading} />} 
     )}
     
-    {misdemeanourData.length === 0 && 
+    {misdemeanourData && misdemeanourData.length === 0 && 
 	<ShowLoading /> }
     
-    {misdemeanourData.length > 0 &&
+    {misdemeanourData && misdemeanourData.length > 0 &&
     <MisdemeanourFilterContext.Provider value={[selectedFilter, setSelectedFilter]}>
     <MisdemeanourList/>
     </MisdemeanourFilterContext.Provider>} 
