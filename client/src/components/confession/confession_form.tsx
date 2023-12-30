@@ -161,8 +161,8 @@ const ConfessionForm = () => {
 
 			<SubmitButton 
 			buttonText = "Confess" 
-			id="submitConfessionButton" 
-			role="submitButton"
+			id="submitButton" 
+			role="submitConfessionButton"
 			attempted={attempted}
 			errorMessages = {errors}
 			/>
