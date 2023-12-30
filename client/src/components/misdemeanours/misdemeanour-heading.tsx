@@ -1,4 +1,4 @@
-import { MisdemeanourHeading} from "../../data/misdemeanour_data";
+import { MisdemeanourHeading} from "../../../types/misdemeanour_client_types";
 interface MisdemeanourTableHeadingProps {
     heading: MisdemeanourHeading;
 }

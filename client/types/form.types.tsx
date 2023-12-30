@@ -23,3 +23,5 @@ export interface InputProps {
 	errorMessage: string;
 	attempted: boolean;
 }
+
+export type FormValues = {[key: string]: string};

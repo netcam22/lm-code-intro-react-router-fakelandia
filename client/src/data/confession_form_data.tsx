@@ -1,13 +1,14 @@
 import { MISDEMEANOURS } from "../../types/misdemeanours.types";
-export const MISDEMEANOUR_FORM_OPTIONS = ["", ...MISDEMEANOURS, "I just want to talk"];
-export const MISDEMEANOUR_FORM_OPTION_VALUES = ["", ...MISDEMEANOURS, "just-talk"];
-export type MisdemeanourFormKind = (typeof MISDEMEANOUR_FORM_OPTIONS)[number];
-import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
+import { MISDEMEANOUR_VIEWS} from "../../types/misdemeanour_client_types";
+import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject, FormValues} 
 from "../../types/form.types";
 
-export type InitialValue = {[key: string]: string};
+const MISDEMEANOUR_OPTIONS = Object.values(MISDEMEANOUR_VIEWS).map((view) => view.desc);
+export const MISDEMEANOUR_FORM_OPTIONS = ["", ...MISDEMEANOUR_OPTIONS, "I just want to talk"];
+export const MISDEMEANOUR_FORM_OPTION_VALUES = ["", ...MISDEMEANOURS, "just-talk"];
+export type MisdemeanourFormKind = (typeof MISDEMEANOUR_FORM_OPTIONS)[number];
 
-export const inputInformation = {
+export const confessionFormMessages = {
 messages: ["It's very difficult to catch people committing misdemeanours so we appreciate it when citizens confess to us directly.", 
 "However, if you're just having a hard day and need to vent then you're welcome to contact us here too. Up to you!"],
 success: null,
@@ -48,5 +49,5 @@ export const formTextAreaInput: Array<FormTextAreaInputObject> = [
 ];
 
 export const formDataArray = [...formTextInput, ...formSelectInput, ...formTextAreaInput];
-export const initialValues: InitialValue = 
+export const initialValues: FormValues = 
 formDataArray.reduce((acc, field) => {return {...acc, [field.role]: ""}}, {});
