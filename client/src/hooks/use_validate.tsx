@@ -1,6 +1,6 @@
 import { FormInputObject, FormValues } from "../types/form.types";
 
-const useGetErrors = (formDataArray: Array<FormInputObject>, input:FormValues)=> {
+const useValidate = (formDataArray: Array<FormInputObject>, input:FormValues)=> {
 
 	function validateInput(title: string, regex: Array<RegExp>, value: 
 		string, message: Array<string>): Array<string> {
@@ -34,4 +34,4 @@ const useGetErrors = (formDataArray: Array<FormInputObject>, input:FormValues)=>
 
 };
 
-export default useGetErrors;
+export default useValidate;
