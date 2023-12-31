@@ -5,7 +5,7 @@ import { SelectInput } from '../form-components/select-input';
 import { TextAreaInput } from '../form-components/text-area-input';
 import { SubmitButton } from '../form-components/submit-button';
 import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, 
-	initialValues, confessionFormMessages} 
+	initialFormValues, confessionFormMessages} 
 from "../../data/confession_form_data";
 import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
 from '../../types/form.types';
@@ -18,8 +18,8 @@ const ConfessionForm = () => {
 
 	const [misdemeanourData, setMisdemeanourData] = useMisdemeanourContext();
 	
-	const [input, setInput] = useState({...initialValues});
-	const [errors, setErrors] = useState({...initialValues});
+	const [input, setInput] = useState({...initialFormValues});
+	const [errors, setErrors] = useState({...initialFormValues});
 	const [attempted, setAttempted] = useState(false);
 	const [formMessages, setFormMessages] = useState({...confessionFormMessages});
 
@@ -77,30 +77,31 @@ const ConfessionForm = () => {
 		return Object.values(errors).reduce((acc, error) => acc+error, "") === "";
 	}
 
-	function setInputError(dataRole: string, errorString: string) {
-		setErrors((currentErrors) =>
-				Object.assign({}, currentErrors, {
-					[dataRole]: errorString,
-				})
-		)
-	}
-
 	function saveInputErrors(dataRole: string, inputValue:string) {
 		const dataObject = formDataArray.find((dataObject: FormInputObject) =>
 		dataObject.role === dataRole);
 		if (dataObject) {
-			const errorString = validateInputField(dataObject.title, 
-				dataObject.regex, inputValue, dataObject.errorMessage);
-			setInputError(dataRole, errorString);
+			setErrorMessage(dataObject.title, 
+				dataObject.regex, inputValue, dataObject.errorMessage, dataRole);
 		}
 	}
 
 	function saveAllErrors() {
 		formDataArray.forEach((dataObject: FormInputObject) => {
-			const errorString = validateInputField(dataObject.title, 
-				dataObject.regex, input[dataObject.role], dataObject.errorMessage);
-				setInputError(dataObject.role, errorString);
+			setErrorMessage(dataObject.title, 
+				dataObject.regex, input[dataObject.role], 
+				dataObject.errorMessage, dataObject.role);
 		});
+	}
+
+	function setErrorMessage(title:string, regex:Array<RegExp>, 
+		inputValue: string, errorMessage: Array<string>, dataRole:string) {
+		const errorString = validateInputField(title, regex, inputValue, errorMessage);
+		setErrors((currentErrors) =>
+				Object.assign({}, currentErrors, {
+					[dataRole]: errorString,
+				})
+		)
 	}
 
 	function handleChange(event: ChangeEvent<HTMLInputElement> | 
