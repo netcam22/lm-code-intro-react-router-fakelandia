@@ -1,29 +1,18 @@
-import { FormValues } from "../../types/form.types";
-
 interface SubmitButtonProps {
 	buttonText: string;
-	errorMessages: FormValues;
+	disable: boolean;
 	id: string;
 	role: string;
-	attempted: boolean;
 }
 
-function manageButtonDisabling(errorMessages: FormValues)  {
-	const errorData = Object.values(errorMessages).reduce((acc, value) => 
-		acc = acc + value, "");
-	return errorData === ""? false: true;
-}
-
-export const SubmitButton : React.FC<SubmitButtonProps> =
-	({buttonText, errorMessages, id, role, attempted}) => {
-	const disableButton = attempted? manageButtonDisabling(errorMessages): false;
+export const SubmitButton : React.FC<SubmitButtonProps> = ({buttonText, disable, id, role}) => {
 	return (
-	<button
-	type = 'submit'
-	className = "form__button"
-	id={id} 
-	role={role} 
-	disabled={disableButton}>
-	{buttonText}</ button>
+		<button
+		type = 'submit'
+		className = "form__button"
+		id={id} 
+		role={role} 
+		disabled={disable}>
+		{buttonText}</ button>
 	);
  }

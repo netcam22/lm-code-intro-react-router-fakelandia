@@ -13,6 +13,7 @@ import { useMisdemeanourContext } from "../../hooks/use_context";
 import { MisdemeanourObject } from '../../types/misdemeanour_client_types';
 import { MisdemeanourKind } from '../../types/misdemeanours.types';
 import  useValidate from '../../hooks/use_validate';
+import  useHasErrors  from '../../hooks/use_has_errors';
 
 const ConfessionForm = () => {
 
@@ -23,13 +24,14 @@ const ConfessionForm = () => {
 	const [formMessages, setFormMessages] = useState({...confessionFormMessages});
 
 	const errors: FormValues = useValidate(formDataArray, input);
+	const hasErrors: boolean = useHasErrors(errors);
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		if (!attempted) {
 			setAttempted(true);
 		}
-		if (attempted || formHasNoErrors()) {
+		if (attempted || !hasErrors) {
 			try {
 				const response = await fetch("http://localhost:8080/api/confess", {
 					method: "POST", 
@@ -71,10 +73,6 @@ const ConfessionForm = () => {
 					setMisdemeanourData((currentData: Array<MisdemeanourObject>) => 
 					[...currentData, newRow]);
 			}
-	}
-
-	function formHasNoErrors() {
-		return Object.values(errors).reduce((acc, error) => acc+error, "") === "";
 	}
 
 	function handleChange(event: ChangeEvent<HTMLInputElement> | 
@@ -141,8 +139,7 @@ const ConfessionForm = () => {
 			buttonText = "Confess" 
 			id="submitButton" 
 			role="submitConfessionButton"
-			attempted={attempted}
-			errorMessages = {errors}
+			disable = {(attempted && hasErrors)}
 			/>
 			</fieldset>
 
