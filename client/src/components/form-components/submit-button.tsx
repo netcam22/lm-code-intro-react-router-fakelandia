@@ -1,14 +1,14 @@
-import { InitialValue } from "../../data/confession_form_data";
+import { FormValues } from "../../data/confession_form_data";
 
 interface SubmitButtonProps {
 	buttonText: string;
-	errorMessages: InitialValue;
+	errorMessages: FormValues;
 	id: string;
 	role: string;
 	attempted: boolean;
 }
 
-function manageButtonDisabling(errorMessages: InitialValue)  {
+function manageButtonDisabling(errorMessages: FormValues)  {
 	const errorData = Object.values(errorMessages).reduce((acc, value) => 
 		acc = acc + value, "");
 	return errorData === ""? false: true;

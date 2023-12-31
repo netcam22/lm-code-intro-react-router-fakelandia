@@ -49,5 +49,5 @@ export const formTextAreaInput: Array<FormTextAreaInputObject> = [
 ];
 
 export const formDataArray = [...formTextInput, ...formSelectInput, ...formTextAreaInput];
-export const initialValues: FormValues = 
+export const initialFormValues: FormValues = 
 formDataArray.reduce((acc, field) => {return {...acc, [field.role]: ""}}, {});
