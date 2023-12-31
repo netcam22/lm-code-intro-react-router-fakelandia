@@ -1,14 +1,14 @@
-import { ChangeEvent} from 'react';
+import { ChangeEvent, useContext} from 'react';
 import { SelectInput } from '../form-components/select-input';
 import { formSelectInput} 
 from '../../data/filter_misdemeanour_form_data';
 import { FormSelectInputObject} from '../../types/form.types';
-import { useMisdemeanourFilterContext } from '../../hooks/use_context';
 import { SelectOptions } from '../../data/filter_misdemeanour_form_data';
+import { MisdemeanourFilterContext } from './misdemeanour-container';
 
 const FilterMisdemeanoursForm = () => {
 
-	const [selectedOption, setSelectedOption] = useMisdemeanourFilterContext();
+	const [selectedOption, setSelectedOption] = useContext(MisdemeanourFilterContext);
 
 	function handleChange(event: ChangeEvent<HTMLSelectElement>) {
 		event.preventDefault();

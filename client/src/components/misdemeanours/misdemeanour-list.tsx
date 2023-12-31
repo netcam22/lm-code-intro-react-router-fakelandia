@@ -1,13 +1,15 @@
 import MisdemeanourItem from "./misdemeanour-item";
-import { useMisdemeanourContext, useMisdemeanourFilterContext} from "../../hooks/use_context";
 import { MisdemeanourObject } from "../../types/misdemeanour_client_types";
 import ShowLoading from "../loading/show-loading";
+import { useContext } from "react";
+import { MisdemeanourFilterContext } from "./misdemeanour-container";
+import { MisdemeanourContext } from "./misdemeanour-data-wrapper";
 
 const MisdemeanourList : React.FC = () => {
 
-const [misdemeanourData] = useMisdemeanourContext();
+const [misdemeanourData] =  useContext(MisdemeanourContext);
 
-const [selectedFilter] = useMisdemeanourFilterContext();
+const [selectedFilter] = useContext(MisdemeanourFilterContext);
 
 return (
         <>
