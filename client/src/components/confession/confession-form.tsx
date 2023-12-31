@@ -30,34 +30,34 @@ const ConfessionForm = () => {
 			setAttempted(true);
 		}
 		if (attempted || formHasNoErrors()) {
-		try {
-			const response = await fetch("http://localhost:8080/api/confess", {
-			method: "POST", 
-			headers: {
-				"Content-Type": "application/json",
-			}, 
-			body : JSON.stringify({
-				subject :input.subject, 
-				reason: input.reason, 
-				details: input.details
-			}),
-			});
-			if (response.ok) {
-			const formResponse = await response.json();
-			setFormMessages( 
-				{messages: [formResponse.message],
-				success: formResponse.success,
-				justTalked: formResponse.justTalked}
-			);
-			if (input.reason !== "just-talk") {
-				addDataToMisdemeanourList(input.reason as MisdemeanourKind);
+			try {
+				const response = await fetch("http://localhost:8080/api/confess", {
+					method: "POST", 
+					headers: {
+						"Content-Type": "application/json",
+					}, 
+					body : JSON.stringify({
+						subject :input.subject, 
+						reason: input.reason, 
+						details: input.details
+					}),
+				});
+				if (response.ok) {
+					const formResponse = await response.json();
+					setFormMessages( 
+						{messages: [formResponse.message],
+						success: formResponse.success,
+						justTalked: formResponse.justTalked}
+					);
+					if (input.reason !== "just-talk") {
+						addDataToMisdemeanourList(input.reason as MisdemeanourKind);
+					}
+				}  
+			} 
+			catch (error) {
+				console.log(error)
 			}
-			}  
-		} 
-		catch (error) {
-			console.log(error)
 		}
-	}
 	}
 
 	function addDataToMisdemeanourList(reason: MisdemeanourKind) {

@@ -18,10 +18,10 @@ const [misdemeanourData, setMisdemeanourData] = useState<Array<MisdemeanourObjec
 useFetch<MisdemeanourObject>(url, "misdemeanours", misdemeanourData, setMisdemeanourData);
 
 return (
-<>
+        <>
         <MisdemeanourContext.Provider value={[misdemeanourData, setMisdemeanourData]}>
         <Router/>
         </MisdemeanourContext.Provider>
-</>
+        </>
 )
 }
