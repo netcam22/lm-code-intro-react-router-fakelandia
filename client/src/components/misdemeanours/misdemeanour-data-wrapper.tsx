@@ -1,5 +1,5 @@
 import { useState, createContext } from "react";
-import { useFetch} from "../../hooks/use_fetch";
+import useFetch from "../../hooks/use_fetch";
 import { Router } from "../router/router";
 
 import { MisdemeanourObject} from "../../types/misdemeanour_client_types";

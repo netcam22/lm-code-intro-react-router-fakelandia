@@ -7,26 +7,26 @@ import { SubmitButton } from '../form-components/submit-button';
 import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, 
 	initialFormValues, confessionFormMessages} 
 from "../../data/confession_form_data";
-import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject} 
+import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject, FormValues} 
 from '../../types/form.types';
 import { useMisdemeanourContext } from "../../hooks/use_context";
 import { MisdemeanourObject } from '../../types/misdemeanour_client_types';
 import { MisdemeanourKind } from '../../types/misdemeanours.types';
-import { validateInputField } from '../../validate/validate_input_field';
+import  useValidate from '../../hooks/use_validate';
 
 const ConfessionForm = () => {
 
 	const [misdemeanourData, setMisdemeanourData] = useMisdemeanourContext();
 	
 	const [input, setInput] = useState({...initialFormValues});
-	const [errors, setErrors] = useState({...initialFormValues});
 	const [attempted, setAttempted] = useState(false);
 	const [formMessages, setFormMessages] = useState({...confessionFormMessages});
+
+	const errors: FormValues = useValidate(formDataArray, input);
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		if (!attempted) {
-			saveAllErrors();
 			setAttempted(true);
 		}
 		if (attempted || formHasNoErrors()) {
@@ -77,33 +77,6 @@ const ConfessionForm = () => {
 		return Object.values(errors).reduce((acc, error) => acc+error, "") === "";
 	}
 
-	function saveInputErrors(dataRole: string, inputValue:string) {
-		const dataObject = formDataArray.find((dataObject: FormInputObject) =>
-		dataObject.role === dataRole);
-		if (dataObject) {
-			setErrorMessage(dataObject.title, 
-				dataObject.regex, inputValue, dataObject.errorMessage, dataRole);
-		}
-	}
-
-	function saveAllErrors() {
-		formDataArray.forEach((dataObject: FormInputObject) => {
-			setErrorMessage(dataObject.title, 
-				dataObject.regex, input[dataObject.role], 
-				dataObject.errorMessage, dataObject.role);
-		});
-	}
-
-	function setErrorMessage(title:string, regex:Array<RegExp>, 
-		inputValue: string, errorMessage: Array<string>, dataRole:string) {
-		const errorString = validateInputField(title, regex, inputValue, errorMessage);
-		setErrors((currentErrors) =>
-				Object.assign({}, currentErrors, {
-					[dataRole]: errorString,
-				})
-		)
-	}
-
 	function handleChange(event: ChangeEvent<HTMLInputElement> | 
 		ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLSelectElement>) {
 		event.preventDefault();
@@ -111,8 +84,7 @@ const ConfessionForm = () => {
 			Object.assign({}, currentData, {
 				[event.target.id]: event.target.value,
 			})
-		)
-		saveInputErrors(event.target.id, event.target.value);
+		);
 	}
 
 	return (
