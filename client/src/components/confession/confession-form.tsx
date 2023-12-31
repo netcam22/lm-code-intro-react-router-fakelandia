@@ -12,8 +12,7 @@ from '../../types/form.types';
 import { useMisdemeanourContext } from "../../hooks/use_context";
 import { MisdemeanourObject } from '../../types/misdemeanour_client_types';
 import { MisdemeanourKind } from '../../types/misdemeanours.types';
-import { validateInputField } from '../../validate/validate_input_field';
-import { useGetErrors } from '../../hooks/use_get_errors';
+import  useValidate from '../../hooks/use_validate';
 
 const ConfessionForm = () => {
 
@@ -23,7 +22,7 @@ const ConfessionForm = () => {
 	const [attempted, setAttempted] = useState(false);
 	const [formMessages, setFormMessages] = useState({...confessionFormMessages});
 
-	const errors: FormValues = useGetErrors(formDataArray, input);
+	const errors: FormValues = useValidate(formDataArray, input);
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();

@@ -1,7 +1,7 @@
 import { useEffect} from "react";
 import { isError } from '../helpers/is_error';
 
-export const useFetch = <T>(endPoint:string, dataProperty:string | null, 
+const useFetch = <T>(endPoint:string, dataProperty:string | null, 
 	data: Array<T>, setData: React.Dispatch<React.SetStateAction<Array<T>>>)=> {
 
 	function setIndexedData(jsonData: Array<T>)  {
