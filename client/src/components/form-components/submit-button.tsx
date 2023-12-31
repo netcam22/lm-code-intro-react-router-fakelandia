@@ -1,4 +1,4 @@
-import { FormValues } from "../../data/confession_form_data";
+import { FormValues } from "../../types/form.types";
 
 interface SubmitButtonProps {
 	buttonText: string;
