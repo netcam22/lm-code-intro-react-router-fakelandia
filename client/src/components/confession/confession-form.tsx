@@ -13,6 +13,7 @@ import { useMisdemeanourContext } from "../../hooks/use_context";
 import { MisdemeanourObject } from '../../types/misdemeanour_client_types';
 import { MisdemeanourKind } from '../../types/misdemeanours.types';
 import { validateInputField } from '../../validate/validate_input_field';
+import { useGetErrors } from '../../hooks/use_get_errors';
 
 const ConfessionForm = () => {
 
@@ -22,7 +23,7 @@ const ConfessionForm = () => {
 	const [attempted, setAttempted] = useState(false);
 	const [formMessages, setFormMessages] = useState({...confessionFormMessages});
 
-	const errors: FormValues = getErrors();
+	const errors: FormValues = useGetErrors(formDataArray, input);
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
@@ -75,20 +76,6 @@ const ConfessionForm = () => {
 
 	function formHasNoErrors() {
 		return Object.values(errors).reduce((acc, error) => acc+error, "") === "";
-	}
-
-	function getErrors() {
-		return formDataArray.reduce((acc: FormValues, dataObject: FormInputObject) => {
-			const messageString = getErrorMessage(dataObject.title, 
-				dataObject.regex, input[dataObject.role], 
-				dataObject.errorMessage);
-				return {...acc, [dataObject.role]: messageString}; 
-			}, {});
-	}
-
-	function getErrorMessage(title:string, regex:Array<RegExp>, 
-		inputValue: string, errorMessage: Array<string>) {
-		return validateInputField(title, regex, inputValue, errorMessage);
 	}
 
 	function handleChange(event: ChangeEvent<HTMLInputElement> | 

@@ -1,8 +1,0 @@
-
-export const useGetErrors = <T>(endPoint:string, dataProperty:string | null, 
-	data: Array<T>, setData: React.Dispatch<React.SetStateAction<Array<T>>>)=> {
-
-	
-};
-
-export default useGetErrors;
