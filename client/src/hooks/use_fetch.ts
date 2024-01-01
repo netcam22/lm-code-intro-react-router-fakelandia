@@ -1,8 +1,8 @@
-import { useEffect} from "react";
-import { isError } from '../helpers/is_error';
+import { useEffect, useState} from "react";
 
 const useFetch = <T>(endPoint:string, dataProperty:string | null, 
-	data: Array<T>, setData: React.Dispatch<React.SetStateAction<Array<T>>>)=> {
+	data: Array<T>, setData: React.Dispatch<React.SetStateAction<Array<T>>>)
+	: string => {
 
 	function setIndexedData(jsonData: Array<T>)  {
 	const indexedData = jsonData.map((item: T, index: number) => {
@@ -11,10 +11,11 @@ const useFetch = <T>(endPoint:string, dataProperty:string | null,
 		setData(indexedData);
 	}
 
+	const [error, setError] = useState("");
+
     useEffect(() => {
 		let rendered = false;
 		const fetchData = async () => {
-			try {
 				const response = await fetch(endPoint);
 				if (response.status === 200) {
 					const json = await response.json();
@@ -22,11 +23,15 @@ const useFetch = <T>(endPoint:string, dataProperty:string | null,
 					const jsonData = dataProperty !== null? 
 					json[dataProperty]: json;
 					setIndexedData(jsonData);
+					setError("");
 					}
 				}
-			} catch (error) {
-                console.log(isError(error) ? error.message : 'Unknown error!');
-			}
+				else if (response.status === 500) {
+					setError("Oops... something went wrong 🤕");
+				}
+				else if (response.status === 418) {
+					setError("I'm a tea pot");
+				}
 		};
 		if (data.length === 0) {
 		fetchData();
@@ -35,6 +40,7 @@ const useFetch = <T>(endPoint:string, dataProperty:string | null,
 		};
 		}
 	});
+	return error;
 };
 
 export default useFetch;

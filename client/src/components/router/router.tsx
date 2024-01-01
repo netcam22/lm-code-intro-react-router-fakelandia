@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "../layouts/main-layout";
-import NotFound from "../not_found/not_found";
+import NotFound from "../not-found/not-found";
 import Home from "../../components/home/home";
 import Confession from "../confession/confession";
 import {MisdemeanourContainer} from "../misdemeanours/misdemeanour-container";
