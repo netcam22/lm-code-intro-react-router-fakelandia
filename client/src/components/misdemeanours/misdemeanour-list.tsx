@@ -18,7 +18,7 @@ return (
 
         {misdemeanourData && selectedFilter && selectedFilter.filterMisdemeanours === "all" &&
         misdemeanourData.map((item: MisdemeanourObject) =>
-        (<MisdemeanourItem key={item.citizenId} citizenId={item.citizenId} 
+        (<MisdemeanourItem key={item.indexValue} citizenId={item.citizenId} 
         misdemeanour = {item.misdemeanour} date = {item.date}
         indexValue = {item.indexValue} />)
         )}
@@ -26,7 +26,7 @@ return (
         {misdemeanourData && selectedFilter && selectedFilter.filterMisdemeanours !== "all" &&
         misdemeanourData.filter((row: MisdemeanourObject) => row.misdemeanour 
         === selectedFilter.filterMisdemeanours).map((item: MisdemeanourObject) =>
-        (<MisdemeanourItem key={item.citizenId} citizenId={item.citizenId} 
+        (<MisdemeanourItem key={item.indexValue} citizenId={item.citizenId} 
         misdemeanour = {item.misdemeanour} date = {item.date}
         indexValue = {item.indexValue} />)
         )}
