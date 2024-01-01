@@ -27,3 +27,16 @@ it('displays option I just want to talk when form is rendered', () => {
 	const option = screen.getByRole("option");
     expect(option.innerHTML).toBe("I just want to talk");
 });
+
+it('displays option Mild Public Rudeness when form is rendered', () => {
+
+	const requiredProps: SelectOptionProps = {
+		option: "Mild Public Rudeness",
+        optionValue: "rudeness"
+	}
+
+	render(<SelectOption {...requiredProps}/>);
+	
+	const option = screen.getByRole("option");
+    expect(option.innerHTML).toBe("Mild Public Rudeness");
+});
