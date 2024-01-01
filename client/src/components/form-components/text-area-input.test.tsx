@@ -82,13 +82,13 @@ it('displays error message under text area field if no input', () => {
         role: "details",
         value: "",
         onChange: () => {},
-        errorMessage: "Reason for contact required",
+        errorMessage: "Your Confession required",
         attempted: true,
         size: {rows: 8, cols: 10}
 	};
 	render(<TextAreaInput {...requiredProps}/>);
 	//Act
-	const message = screen.getByText(/Reason for contact required/);
+	const message = screen.getByText(/Your Confession required/);
 	//Assert
 	expect(message).toBeInTheDocument();
 });

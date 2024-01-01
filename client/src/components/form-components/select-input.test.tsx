@@ -57,3 +57,23 @@ it('Reason for contact input field displays value vegetables', () => {
 	//Assert
 	expect(selectInput.value).toBe("vegetables");
 });
+
+
+it('displays error message under select input field if no option selected and attempted', () => {
+    //Arrange;
+	const requiredProps : SelectInputProps = {
+		title: "Reason for contact",
+		role: "reason",
+		value: "",
+		onChange: () => {},
+		errorMessage: "Reason for contact required",
+		attempted: true,
+		options: MISDEMEANOUR_FORM_OPTIONS, 
+        optionValues: MISDEMEANOUR_FORM_OPTION_VALUES
+	};
+	render(<SelectInput {...requiredProps}/>);
+	//Act
+	const message = screen.getByText(/Reason for contact required/);
+	//Assert
+	expect(message).toBeInTheDocument();
+});
