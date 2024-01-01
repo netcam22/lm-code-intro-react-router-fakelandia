@@ -56,3 +56,23 @@ it("displays I didn't eat any vegetables yesterday when input by user", () => {
 	//Assert
 	expect(inputField.value).toBe("I didn't eat any vegetables yesterday");
 });
+
+it('displays error message under text area field if too few characters input', () => {
+    //Arrange;
+	const requiredProps = {
+		title: "Your Confession",
+        role: "details",
+        value: "I didn't",
+        onChange: () => {},
+        errorMessage: "must be between 10 and 500 characters",
+        attempted: true,
+        size: {rows: 8, cols: 10}
+	};
+	render(<TextAreaInput {...requiredProps}/>);
+	//Act
+	const message = screen.getByText(
+		/must be between 10 and 500 characters/
+	);
+	//Assert
+	expect(message).toBeInTheDocument();
+});
