@@ -15,9 +15,7 @@ it('renders form label Your Confession', () => {
 	};
 	render(<TextAreaInput {...requiredProps}/>);
 
-	const labelText = screen.getByText(
-		/Your Confession/i
-	);
+	const labelText = screen.getByText(/Your Confession/);
 	expect(labelText).toBeInTheDocument();
 });
 
@@ -73,6 +71,24 @@ it('displays error message under text area field if too few characters input', (
 	const message = screen.getByText(
 		/must be between 10 and 500 characters/
 	);
+	//Assert
+	expect(message).toBeInTheDocument();
+});
+
+it('displays error message under text area field if no input', () => {
+    //Arrange;
+	const requiredProps = {
+		title: "Your Confession",
+        role: "details",
+        value: "",
+        onChange: () => {},
+        errorMessage: "Reason for contact required",
+        attempted: true,
+        size: {rows: 8, cols: 10}
+	};
+	render(<TextAreaInput {...requiredProps}/>);
+	//Act
+	const message = screen.getByText(/Reason for contact required/);
 	//Assert
 	expect(message).toBeInTheDocument();
 });
