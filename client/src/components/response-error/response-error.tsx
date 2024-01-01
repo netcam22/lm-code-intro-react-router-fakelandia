@@ -1,10 +1,8 @@
-import { ErrorMessage } from "../form-components/error-message";
-
-export type ReponseErrorProps = {
+export type ResponseErrorProps = {
     errorMessage: string;
 }
 
-const ResponseError: React.FC<ReponseErrorProps> = ({errorMessage}) => <>
+const ResponseError: React.FC<ResponseErrorProps> = ({errorMessage}) => <>
     <h2 className='response-error'>{errorMessage}</h2>
 </>;
 

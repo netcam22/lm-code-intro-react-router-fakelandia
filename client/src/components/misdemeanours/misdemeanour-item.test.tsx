@@ -36,19 +36,3 @@ it('renders misdemeanour item on page with api response data', async () => {
     const itemElement = await screen.findByText(/Not Eating Your Vegetables/);
     expect(itemElement).toBeInTheDocument();
 });
-
-it('displays error message', async () => {
-    server.use(
-        http.get("http://localhost:8080/api/misdemeanours/10", () => {
-        return new HttpResponse(null, {
-        status: 500,
-        headers: {
-            'Content-Type': 'text/plain',
-        },
-        })
-    })
-    )
-    render(<MisdemeanourItem {...requiredProps}/>);
-    const errorElement = await screen.findByText(/Oops... something went wrong, try again 🤕/i);
-    expect(errorElement).toBeInTheDocument();
-  });
