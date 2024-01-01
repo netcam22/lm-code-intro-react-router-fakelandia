@@ -1,5 +1,5 @@
-import { render, screen} from '@testing-library/react';
-import { it, expect} from 'vitest';
+import { fireEvent, render, screen} from '@testing-library/react';
+import { it, expect, vi} from 'vitest';
 import { TextInput } from './text-input';
 import { TextInputProps } from "./text-input";
 
@@ -86,4 +86,25 @@ it('displays error message under input field if no input', () => {
 	const message = screen.getByText(/Subject required/);
 	//Assert
 	expect(message).toBeInTheDocument();
+});
+
+it('calls onChange function when user inputs text for subject field', () => {
+    //Arrange
+	const mockChange = vi.fn();
+	const requiredProps: TextInputProps = {
+        title: "Subject",
+        role: "subject",
+        value: "",
+        onChange: mockChange,
+        errorMessage: "",
+        attempted: false
+	};
+	//Act
+	render(<TextInput {...requiredProps}/>);
+	const inputField: HTMLInputElement = screen.getByLabelText("Subject");
+	if (inputField) {
+		fireEvent.change(inputField, {target: {value: 'W'}})
+	}
+	//Assert
+	expect(mockChange).toBeCalled();
 });
