@@ -40,3 +40,16 @@ it('displays option Mild Public Rudeness when form is rendered', () => {
 	const option = screen.getByRole("option");
     expect(option.innerHTML).toBe("Mild Public Rudeness");
 });
+
+it('displays empty option in select element when form is rendered', () => {
+
+	const requiredProps: SelectOptionProps = {
+		option: "",
+        optionValue: ""
+	}
+
+	render(<SelectOption {...requiredProps}/>);
+	
+	const option = screen.getByRole("option");
+    expect(option.innerHTML).toBe("");
+});
