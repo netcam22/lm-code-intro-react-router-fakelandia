@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-interface FormHeaderProps {
+export interface FormHeaderProps {
 	message: string;
 	success: boolean | null;
 	justTalked: boolean | null;
