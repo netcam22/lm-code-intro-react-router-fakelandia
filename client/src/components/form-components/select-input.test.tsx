@@ -39,7 +39,7 @@ it('displays select input field when rendering confession form', () => {
     expect(selectInput).toBeInTheDocument();
 });
 
-it('Reason for contact input field displays value pvegetables', () => {
+it('Reason for contact input field displays value vegetables', () => {
     //Arrange
 	const requiredProps : SelectInputProps = {
 		title: "Reason for contact",
