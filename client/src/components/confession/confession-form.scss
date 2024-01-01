@@ -11,11 +11,11 @@
         clear: both;
     }
 
-      &__fieldset {
+    &__fieldset {
         float: left;
         width: 80%;
         margin: 5% 10%;
-      }
+    }
 
     &__input {
         width: 100%;
@@ -66,13 +66,24 @@
         &--error {
             color: $autumn;   
         }
-        &--valid {
+        &--normal {
             color: $dark-blue;
         }
         &--response {
             font-weight: bold;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             text-align: center;
+            font-family: "Algeria";
+        }
+        &--navlink {
+            font-family: "Algeria";
+        }
+        &--navlink a {
+            text-decoration: none;
+            color: $dark-blue;
+        }
+        &--navlink a:hover {
+            color: $fire;
         }
     }    
 }

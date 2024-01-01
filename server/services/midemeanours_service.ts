@@ -42,7 +42,7 @@ export async function handleConfession(confession: ConfessionInput) {
 		return {
 			success: true,
 			justTalked: true,
-			message: 'Thanks for talking to us.',
+			message: 'Thanks for talking to us',
 		};
 	}
 

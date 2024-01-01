@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 interface FormHeaderProps {
 	message: string;
 	success: boolean | null;
@@ -8,10 +10,14 @@ const FormHeader: React.FC<FormHeaderProps> = ({message, success, justTalked}) =
 		return (
 			<>
 			{success === null && justTalked === null &&
-			<p className = "form__message form__message--valid">{message}</p>
+			<p className = "form__message form__message--normal">{message}</p>
+			}
+			{success !== null && justTalked !== null && success && !justTalked &&
+			<p className = "form__message--navlink form__message--response">
+			<NavLink to = "/misdemeanours">View List of Misdemeanours</NavLink></p>
 			}
 			{success !== null && justTalked !== null && success && justTalked &&
-			<p className = "form__message form__message--valid form__message--response">{message}</p>
+			<p className = "form__message form__message--normal form__message--response">{message}</p>
 			}
 			{success !== null && justTalked !== null && !success &&
 			<p className = "form__message form__message--error form__message--response">{message}</p>

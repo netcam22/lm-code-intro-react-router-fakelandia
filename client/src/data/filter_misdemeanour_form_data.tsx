@@ -2,6 +2,7 @@ import { MISDEMEANOURS } from "../types/misdemeanours.types";
 import {FormSelectInputObject} 
 from "../types/form.types";
 import { MISDEMEANOUR_OPTIONS } from "../types/misdemeanour_client_types";
+
 const today = new Date().toLocaleDateString("en-GB");
 const selectAll = `Show All Misdemeanours on ${today}`;
 const MISDEMEANOUR_FILTER_OPTIONS = [selectAll, ...MISDEMEANOUR_OPTIONS];
