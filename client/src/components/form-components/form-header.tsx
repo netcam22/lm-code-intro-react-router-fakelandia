@@ -7,16 +7,17 @@ export interface FormHeaderProps {
 }
 const FormHeader: React.FC<FormHeaderProps> = ({message, success, justTalked}) => 
 	{
+		console.log("message:", message, "success:", success, "just talked:", justTalked);
 		return (
 			<>
 			{success === null && justTalked === null &&
 			<p className = "form__message form__message--normal">{message}</p>
 			}
-			{success !== null && justTalked !== null && success && !justTalked &&
+			{success && !justTalked &&
 			<p className = "form__message--navlink form__message--response">
 			<NavLink to = "/misdemeanours">View List of Misdemeanours</NavLink></p>
 			}
-			{success !== null && justTalked !== null && success && justTalked &&
+			{success && justTalked &&
 			<p className = "form__message form__message--normal form__message--response">{message}</p>
 			}
 			{success !== null && justTalked !== null && !success &&
