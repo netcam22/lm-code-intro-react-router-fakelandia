@@ -1,5 +1,5 @@
-import { render, screen} from '@testing-library/react';
-import { it, expect} from 'vitest';
+import { fireEvent, render, screen} from '@testing-library/react';
+import { it, expect, vi} from 'vitest';
 import { TextAreaInput, TextAreaInputProps } from "./text-area-input";
 
 it('renders form label Your Confession', () => {
@@ -91,4 +91,26 @@ it('displays error message under text area field if no input', () => {
 	const message = screen.getByText(/Your Confession required/);
 	//Assert
 	expect(message).toBeInTheDocument();
+});
+
+it('calls onChange function when user inputs text in confession text area', () => {
+    //Arrange
+	const mockChange = vi.fn();
+	const requiredProps: TextAreaInputProps = {
+        title: "Your Confession",
+        role: "details",
+        value: "",
+        onChange: mockChange,
+        errorMessage: "Your Confession required",
+        attempted: true,
+        size: {rows: 8, cols: 10}
+	};
+	//Act
+	render(<TextAreaInput {...requiredProps}/>);
+	const inputField: HTMLInputElement = screen.getByLabelText("Your Confession");
+	if (inputField) {
+		fireEvent.change(inputField, {target: {value: 'W'}})
+	}
+	//Assert
+	expect(mockChange).toBeCalled();
 });

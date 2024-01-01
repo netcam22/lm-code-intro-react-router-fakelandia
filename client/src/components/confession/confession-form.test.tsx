@@ -1,5 +1,5 @@
-import { render, screen} from '@testing-library/react';
-import { it, expect} from 'vitest';
+import { fireEvent, render, screen} from '@testing-library/react';
+import { it, expect, vi} from 'vitest';
 import ConfessionForm from './confession-form';
 
 it('calls the handleSubmit function when the confess button is clicked', async () => {
@@ -8,5 +8,10 @@ it('calls the handleSubmit function when the confess button is clicked', async (
 	
 	const submitButton = screen.getByRole("submitConfessionButton");
     expect(submitButton).toBeInTheDocument();
-
+/*
+	if (submitButton) {
+		await userEvent.click(submitButton);
+	}
+	expect(mockSubmit).toBeCalled();
+*/
 });
