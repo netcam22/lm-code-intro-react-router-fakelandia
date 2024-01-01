@@ -28,7 +28,7 @@ return (
     <section className = "container">
 
     {MISDEMEANOUR_DATA_HEADINGS.map((heading: MisdemeanourHeading, index: number) => {
-    return <MisdemeanourTableHeading key={index} heading={heading} />} 
+    return <MisdemeanourTableHeading key={index.toString()} heading={heading} />} 
     )}
     
     {misdemeanourData && misdemeanourData.length === 0 && 

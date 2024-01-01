@@ -1,9 +1,14 @@
 import { MISDEMEANOURS } from "../types/misdemeanours.types";
-export const MISDEMEANOUR_FILTERS = ["all", ...MISDEMEANOURS];
-export type MisdemeanourFilterKind = (typeof MISDEMEANOUR_FILTERS)[number];
 import {FormSelectInputObject} 
 from "../types/form.types";
+import { MISDEMEANOUR_OPTIONS } from "../types/misdemeanour_client_types";
 
+const today = new Date().toLocaleDateString("en-GB");
+const selectAll = `Show All Misdemeanours on ${today}`;
+const MISDEMEANOUR_FILTER_OPTIONS = [selectAll, ...MISDEMEANOUR_OPTIONS];
+const MISDEMEANOUR_FILTER_OPTION_VALUES = ["all", ...MISDEMEANOURS];
+
+export type MisdemeanourFilterKind = (typeof MISDEMEANOUR_FILTER_OPTIONS)[number];
 export type SelectOptions = {[key: string]: MisdemeanourFilterKind};
 
 export const formSelectInput: Array<FormSelectInputObject> = [
@@ -13,8 +18,8 @@ export const formSelectInput: Array<FormSelectInputObject> = [
     role: "filterMisdemeanours",
     regex: [/^all{1}|rudeness{1}|vegetables{1}|lift{1}|united{1}$/],
     errorMessage: ['error: invalid selection'],
-    options: [...MISDEMEANOUR_FILTERS],
-    optionValues: [...MISDEMEANOUR_FILTERS]
+    options: [...MISDEMEANOUR_FILTER_OPTIONS],
+    optionValues: [...MISDEMEANOUR_FILTER_OPTION_VALUES]
     }
 ];
 
