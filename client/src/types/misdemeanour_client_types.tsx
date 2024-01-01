@@ -17,3 +17,5 @@ export const MISDEMEANOUR_VIEWS: MisdemeanourView = {
 	lift: {icon: "🗣", desc: "Speaking in a Lift"},
 	united:  {icon: "😈", desc: "Supporting Manchester United"}
  } as const;
+
+ export const MISDEMEANOUR_OPTIONS = Object.values(MISDEMEANOUR_VIEWS).map((view) => view.desc);
