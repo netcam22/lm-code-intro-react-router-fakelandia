@@ -38,3 +38,21 @@ it('renders Your Confession text area input field', () => {
 	//Assert
     expect(inputField).toBeInTheDocument();
 });
+
+it("displays I didn't eat any vegetables yesterday when input by user", () => {
+    //Arrange
+	const requiredProps: TextAreaInputProps = {
+		title: "Your Confession",
+        role: "details",
+        value: "I didn't eat any vegetables yesterday",
+        onChange: () => {},
+        errorMessage: "",
+        attempted: false,
+        size: {rows: 8, cols: 10}
+	};
+	//Act
+	render(<TextAreaInput {...requiredProps}/>);
+	const inputField: HTMLTextAreaElement = screen.getByLabelText("Your Confession");
+	//Assert
+	expect(inputField.value).toBe("I didn't eat any vegetables yesterday");
+});
