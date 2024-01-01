@@ -17,7 +17,7 @@ it('will display thankyou message when just talk message submitted', async () =>
     expect(messageElement).toBeInTheDocument();
 });
 
-it('will display View List of Misdemeanours when post sucessful', async () => {
+it('will display View List of Misdemeanours when confession made', async () => {
 
 	const requiredProps: FormHeaderProps = {
         message: "View List of Misdemeanours",
@@ -28,5 +28,20 @@ it('will display View List of Misdemeanours when post sucessful', async () => {
 	render(<FormHeader {...requiredProps}/>);
 	
 	const messageElement = await screen.findByText(/View List of Misdemeanours/);
+    expect(messageElement).toBeInTheDocument();
+});
+
+
+it('will display message about completing form', () => {
+
+	const requiredProps: FormHeaderProps = {
+        message: "It's very difficult to catch people committing misdemeanours",
+        success: null,
+        justTalked: null
+	}
+
+	render(<FormHeader {...requiredProps}/>);
+	
+	const messageElement = screen.getByText(/It's very difficult to catch people committing misdemeanours/);
     expect(messageElement).toBeInTheDocument();
 });

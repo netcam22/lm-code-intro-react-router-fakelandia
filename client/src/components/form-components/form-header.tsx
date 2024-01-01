@@ -7,7 +7,6 @@ export interface FormHeaderProps {
 }
 const FormHeader: React.FC<FormHeaderProps> = ({message, success, justTalked}) => 
 	{
-		console.log("message:", message, "success:", success, "just talked:", justTalked);
 		return (
 			<>
 			{success === null && justTalked === null &&
