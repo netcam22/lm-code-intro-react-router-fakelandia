@@ -22,3 +22,20 @@ const requiredProps: TextInputProps = {
    //Assert
 expect(labelText).toBeInTheDocument();
 });
+
+it('renders subject input field', () => {
+    //Arrange
+	const requiredProps: TextInputProps = {
+		title: "Subject",
+        role: "subject",
+        value: "Confession",
+        onChange: () => {},
+        errorMessage: "",
+        attempted: false
+    };
+	//Act
+	render(<TextInput {...requiredProps}/>);
+	const inputField: HTMLInputElement = screen.getByLabelText("Subject");
+	//Assert
+    expect(inputField).toBeInTheDocument();
+});
