@@ -4,8 +4,6 @@ import Home from './home';
 
 it('renders home title', () => {
 	render(<Home />);
-	const homeTitle = screen.getByText(
-		/Home/i
-	);
+	const homeTitle = screen.getByText(/Home/);
 	expect(homeTitle).toBeInTheDocument();
 });
