@@ -86,7 +86,7 @@ const ConfessionForm = () => {
 	}
 
 	return (
-		<form className='form' onSubmit = {handleSubmit}>
+		<form className='form'role ='form' onSubmit = {handleSubmit}>
 			{formMessages.messages.map((message: string, index: number) => 
 			<FormHeader key = {index.toString()} message = {message}
 			success = {formMessages.success} justTalked = {formMessages.justTalked}/>

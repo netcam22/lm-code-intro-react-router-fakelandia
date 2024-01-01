@@ -1,5 +1,5 @@
-import { render, screen} from '@testing-library/react';
-import { it, expect} from 'vitest';
+import { fireEvent, render, screen} from '@testing-library/react';
+import { it, expect, vi} from 'vitest';
 import { SelectInput, SelectInputProps } from './select-input';
 import { MISDEMEANOUR_FORM_OPTIONS, MISDEMEANOUR_FORM_OPTION_VALUES } from '../../data/confession_form_data';
 it('displays form label for Reason for contact when rendering confession form', () => {
@@ -76,4 +76,27 @@ it('displays error message under select input field if no option selected and at
 	const message = screen.getByText(/Reason for contact required/);
 	//Assert
 	expect(message).toBeInTheDocument();
+});
+
+it('calls onChange function when user selects option vegetables', () => {
+    //Arrange
+	const mockChange = vi.fn();
+	const requiredProps : SelectInputProps = {
+		title: "Reason for contact",
+		role: "reason",
+		value: "vegetables",
+		onChange: mockChange,
+		errorMessage: "",
+		attempted: false,
+		options: MISDEMEANOUR_FORM_OPTIONS, 
+        optionValues: MISDEMEANOUR_FORM_OPTION_VALUES
+	};
+	//Act
+	render(<SelectInput {...requiredProps}/>);
+	const inputField: HTMLInputElement = screen.getByLabelText("Reason for contact");
+	if (inputField) {
+		fireEvent.change(inputField, {target: {value: 'vegetables'}})
+	}
+	//Assert
+	expect(mockChange).toBeCalled();
 });

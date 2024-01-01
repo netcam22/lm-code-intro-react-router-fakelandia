@@ -1,4 +1,4 @@
-interface SubmitButtonProps {
+export interface SubmitButtonProps {
 	buttonText: string;
 	disable: boolean;
 	id: string;
