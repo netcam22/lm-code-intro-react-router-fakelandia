@@ -15,9 +15,7 @@ const requiredProps: TextInputProps = {
     };
    //Act
     render(<TextInput {...requiredProps}/>);
-    const labelText = screen.getByText(
-        /Subject/i
-    );
+    const labelText = screen.getByText(/Subject/);
    //Assert
 expect(labelText).toBeInTheDocument();
 });
@@ -68,9 +66,24 @@ it('displays error message under input field if confession attempted and value i
 	};
 	render(<TextInput {...requiredProps}/>);
 	//Act
-	const message = screen.getByText(
-		/must be between 2 and 20 characters/i
-	);
+	const message = screen.getByText(/must be between 2 and 20 characters/);
+	//Assert
+	expect(message).toBeInTheDocument();
+});
+
+it('displays error message under input field if no input', () => {
+    //Arrange;
+	const requiredProps = {
+		title: "Subject",
+        role: "subject",
+        value: "",
+        onChange: () => {},
+        errorMessage: "Subject required",
+        attempted: true
+	};
+	render(<TextInput {...requiredProps}/>);
+	//Act
+	const message = screen.getByText(/Subject required/);
 	//Assert
 	expect(message).toBeInTheDocument();
 });
