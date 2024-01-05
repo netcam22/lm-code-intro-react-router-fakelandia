@@ -2,13 +2,16 @@
     width: 100%;
     display: flex;
     margin: 0;
-    padding: 2%;
+    padding: 1% 2% 8% 2%;
     background-color: $cream;
     color: $fire;
     flex-wrap: wrap;
     flex-direction: column;
     box-sizing: border-box;
     min-height: 30vh;
+    background-image: url("./../../src/assets/images/houses.png");
+    background-position-y: bottom;
+    background-repeat: repeat-x;
 
     @include respond-medium {
         flex-direction: row;
