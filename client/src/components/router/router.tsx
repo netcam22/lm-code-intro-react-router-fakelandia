@@ -16,14 +16,6 @@ export const Router = () => {
         <Route path = "/" element = {<MainLayout/>}>
             <Route index element = {<Home/>}/>
             <Route path = "misdemeanours" element = {<MisdemeanourContainer />}/>
-                <Route path = "misdemeanours/mild_public_rudeness" 
-                element = {<MildPublicRudeness />}/>
-                <Route path = "misdemeanours/speaking_in_a_lift" 
-                element = {<SpeakingInALift />}/>
-                <Route path = "misdemeanours/not_eating_your_vegetables" 
-                element = {<NotEatingYourVegetables />}/>
-                <Route path = "misdemeanours/supporting_manchester_united" 
-                element = {<SupportingManchesterUnited />}/>
             <Route path = "confession" 
             element = {<Confession/>}/>
             <Route path = "*" element = {<NotFound/>}/>
