@@ -1,6 +1,6 @@
 import { render, screen} from '@testing-library/react';
 import { it, expect} from 'vitest';
-import ConfessionForm from './confession-form';
+import ConfessionForm from './confession';
 import Confession from './confession';
 
 it('renders confession title when confession page loads', () => {
