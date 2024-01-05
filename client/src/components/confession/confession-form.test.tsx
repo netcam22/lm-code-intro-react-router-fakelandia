@@ -1,5 +1,5 @@
 import { fireEvent, render, screen} from '@testing-library/react';
-import { it, expect, vi, Mock} from 'vitest';
+import { it, expect, vi} from 'vitest';
 import ConfessionForm from './confession-form';
 import { ConfessionFormProps } from './confession-form';
 
