@@ -10,6 +10,7 @@ export const SubmitButton : React.FC<SubmitButtonProps> = ({buttonText, disable,
 		<button
 		type = 'submit'
 		className = "form__button"
+		name = {id}
 		id={id} 
 		role={role} 
 		disabled={disable}>

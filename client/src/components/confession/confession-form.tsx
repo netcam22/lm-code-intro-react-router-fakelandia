@@ -22,6 +22,8 @@ export type ConfessionFormProps = {
 const ConfessionForm : React.FC<ConfessionFormProps> = 
 ({attempted, errors, hasErrors, handleSubmit, formMessages}) => {
 
+	console.log("attempted", attempted, "errors", errors, hasErrors, handleSubmit, "formMessages", formMessages);
+
     const [input, setInput] = useContext(ConfessionFormContext);
 
 	function handleChange(event: ChangeEvent<HTMLInputElement> | 
@@ -37,7 +39,8 @@ const ConfessionForm : React.FC<ConfessionFormProps> =
 	}
 
 	return (
-		<form className='form' role = 'form' onSubmit = {handleSubmit}>
+		<form className='form' role = 'confession-form' 
+		id = 'confession-form' onSubmit = {handleSubmit}>
 			{formMessages.messages.map((message: string, index: number) => 
 			<FormHeader key = {index.toString()} message = {message}
 			success = {formMessages.success} justTalked = {formMessages.justTalked}/>

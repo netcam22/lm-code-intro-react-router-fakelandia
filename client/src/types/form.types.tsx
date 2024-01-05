@@ -28,6 +28,6 @@ export type FormValues = {[key: string]: string};
 
 export type ConfessionPostResponse  = {
     messages: string[];
-    success: null;
-    justTalked: null;
+    success: boolean;
+    justTalked: boolean;
 }
