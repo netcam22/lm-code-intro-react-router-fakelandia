@@ -4,11 +4,6 @@ import NotFound from "../not-found/not-found";
 import Home from "../../components/home/home";
 import Confession from "../confession/confession";
 import {MisdemeanourContainer} from "../misdemeanours/misdemeanour-container";
-import MildPublicRudeness from "../misdemeanours/misdemeanour-kind/mild_public_rudeness";
-import SpeakingInALift from "../misdemeanours/misdemeanour-kind/speaking_in_a_lift";
-import NotEatingYourVegetables from "../misdemeanours/misdemeanour-kind/not_eating_your_vegetables";
-import SupportingManchesterUnited from "../misdemeanours/misdemeanour-kind/supporting_manchester_united";
-
 
 export const Router = () => {
     return (

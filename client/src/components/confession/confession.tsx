@@ -1,19 +1,18 @@
-import { useState, ChangeEvent, FormEvent, useContext} from 'react';
-import FormHeader from '../form-components/form-header';
-import {TextInput} from '../form-components/text-input';
-import { SelectInput } from '../form-components/select-input';
-import { TextAreaInput } from '../form-components/text-area-input';
-import { SubmitButton } from '../form-components/submit-button';
-import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, 
-	initialFormValues, confessionFormMessages} 
+import { useState, FormEvent, useContext, createContext} from 'react';
+import { formDataArray, initialFormValues, confessionFormMessages} 
 from "../../data/confession_form_data";
-import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject, FormValues} 
-from '../../types/form.types';
+import {FormValues} from '../../types/form.types';
 import { MisdemeanourObject } from '../../types/misdemeanour_client_types';
 import { MisdemeanourKind } from '../../types/misdemeanours.types';
 import  useValidate from '../../hooks/use_validate';
 import  useHasErrors  from '../../hooks/use_has_errors';
 import { MisdemeanourContext } from '../misdemeanours/misdemeanour-data-wrapper';
+import ConfessionForm from './confession-form';
+
+export type ConfessionInputType = 
+[FormValues, React.Dispatch<React.SetStateAction<FormValues>>] | [];
+
+export const ConfessionFormContext = createContext<ConfessionInputType>([]);
 
 const Confession = () => {
 
@@ -75,80 +74,20 @@ const Confession = () => {
 			}
 	}
 
-	function handleChange(event: ChangeEvent<HTMLInputElement> | 
-		ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLSelectElement>) {
-		event.preventDefault();
-		setInput((currentData) =>
-			Object.assign({}, currentData, {
-				[event.target.id]: event.target.value,
-			})
-		);
-	}
-
 	return (
 
 		<section className = "confession">
 		<h2 className = "title">Confess to Us</h2>
 
-		<form className='form' role = 'form' onSubmit = {handleSubmit}>
-			{formMessages.messages.map((message: string, index: number) => 
-			<FormHeader key = {index.toString()} message = {message}
-			success = {formMessages.success} justTalked = {formMessages.justTalked}/>
-			)}
-			<fieldset className = "fieldset">
-
-			{formTextInput.map((field: FormInputObject) => 
-
-			<TextInput 
-				key = {field.id}
-				title = {field.title} 
-				errorMessage = {errors[field.role]}
-				value={input[field.role]} 
-				onChange={handleChange} 
-				attempted={attempted}
-				role = {field.role} 
-			/>)
-			}
-
-			{formSelectInput.map((field: FormSelectInputObject) => 
-
-				<SelectInput
-				key = {field.id}
-				title = {field.title} 
-				errorMessage = {errors[field.role]}
-				value={input[field.role]} 
-				onChange={handleChange} 
-				attempted={attempted} 
-				role = {field.role} 
-				options = {field.options}
-				optionValues = {field.optionValues}
-				/>)
-			}
-
-			{formTextAreaInput.map((field: FormTextAreaInputObject) => 
-
-			<TextAreaInput 
-				key = {field.id}
-				title = {field.title} 
-				errorMessage = {errors[field.role]}
-				value={input[field.role]} 
-				onChange={handleChange} 
-				attempted={attempted} 
-				role = {field.role} 
-				size = {field.size}
-			/>)
-			}
-
-			<SubmitButton 
-			buttonText = "Confess" 
-			id="submitButton" 
-			role="submitConfessionButton"
-			disable = {(attempted && hasErrors)}
-			/>
-			</fieldset>
-
-		</form>	
-
+		<ConfessionFormContext.Provider value={[input, setInput]}>
+		<ConfessionForm 
+		attempted = {attempted} 
+		errors = {errors}
+		hasErrors = {hasErrors}
+		handleSubmit = {handleSubmit}
+		formMessages = {formMessages}
+		/>
+		</ConfessionFormContext.Provider>
 		</section>
 	);
 };
