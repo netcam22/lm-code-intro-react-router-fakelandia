@@ -1,6 +1,5 @@
 import { render, screen} from '@testing-library/react';
 import { it, expect} from 'vitest';
-import ConfessionForm from './confession-form';
 import Confession from './confession';
 
 it('renders confession title when confession page loads', () => {
@@ -10,7 +9,6 @@ it('renders confession title when confession page loads', () => {
 });
 
 it('renders form element when confession page loads', () => {
-	const { container } = render(<ConfessionForm />);
-	expect(container.firstChild).toHaveClass('form');
+	const { container } = render(<Confession />);
+	expect(container.firstChild).toHaveClass('confession');
 });
-

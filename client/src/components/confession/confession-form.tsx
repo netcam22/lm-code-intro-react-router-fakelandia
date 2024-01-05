@@ -1,99 +1,53 @@
-import { useState, ChangeEvent, FormEvent, useContext} from 'react';
+import { ChangeEvent, FormEventHandler, useContext} from 'react';
 import FormHeader from '../form-components/form-header';
 import {TextInput} from '../form-components/text-input';
 import { SelectInput } from '../form-components/select-input';
 import { TextAreaInput } from '../form-components/text-area-input';
 import { SubmitButton } from '../form-components/submit-button';
-import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, 
-	initialFormValues, confessionFormMessages} 
+import { formTextInput, formSelectInput, formTextAreaInput} 
 from "../../data/confession_form_data";
-import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject, FormValues} 
+import {ConfessionPostResponse, FormInputObject, FormSelectInputObject, 
+    FormTextAreaInputObject, FormValues} 
 from '../../types/form.types';
-import { MisdemeanourObject } from '../../types/misdemeanour_client_types';
-import { MisdemeanourKind } from '../../types/misdemeanours.types';
-import  useValidate from '../../hooks/use_validate';
-import  useHasErrors  from '../../hooks/use_has_errors';
-import { MisdemeanourContext } from '../misdemeanours/misdemeanour-data-wrapper';
+import { ConfessionFormContext } from './confession';
 
-const ConfessionForm = () => {
+export type ConfessionFormProps = {
+    attempted: boolean; 
+    errors: FormValues;
+    hasErrors: boolean;
+    handleSubmit: FormEventHandler<HTMLFormElement>;
+    formMessages: ConfessionPostResponse;
+}
 
-	const [misdemeanourData, setMisdemeanourData] = useContext(MisdemeanourContext);
-	
-	const [input, setInput] = useState({...initialFormValues});
-	const [attempted, setAttempted] = useState(false);
-	const [formMessages, setFormMessages] = useState({...confessionFormMessages});
+const ConfessionForm : React.FC<ConfessionFormProps> = 
+({attempted, errors, hasErrors, handleSubmit, formMessages}) => {
 
-	const errors: FormValues = useValidate(formDataArray, input);
-	const hasErrors: boolean = useHasErrors(errors);
+	console.log("attempted", attempted, "errors", errors, hasErrors, handleSubmit, "formMessages", formMessages);
 
-	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-		event.preventDefault();
-		if (!attempted) {
-			setAttempted(true);
-		}
-		if (attempted || !hasErrors) {
-			try {
-				const response = await fetch("http://localhost:8080/api/confess", {
-					method: "POST", 
-					headers: {
-						"Content-Type": "application/json",
-					}, 
-					body : JSON.stringify({
-						subject :input.subject, 
-						reason: input.reason, 
-						details: input.details
-					}),
-				});
-				if (response.ok) {
-					const formResponse = await response.json();
-					setFormMessages( 
-						{messages: [formResponse.message],
-						success: formResponse.success,
-						justTalked: formResponse.justTalked}
-					);
-					if (input.reason !== "just-talk") {
-						addDataToMisdemeanourList(input.reason as MisdemeanourKind);
-					}
-				}  
-			} 
-			catch (error) {
-				console.log(error)
-			}
-		}
-	}
-
-	function addDataToMisdemeanourList(reason: MisdemeanourKind) {
-		if (misdemeanourData && setMisdemeanourData) {
-			const len = misdemeanourData.length;
-		const newRow: MisdemeanourObject = 
-			{citizenId: Math.floor(len + Math.random() * 37 * Math.random() * 967), 
-				misdemeanour: reason, 
-				date: new Date().toLocaleDateString("en-GB"), 
-				indexValue: len.toString()};
-					setMisdemeanourData((currentData: Array<MisdemeanourObject>) => 
-					[...currentData, newRow]);
-			}
-	}
+    const [input, setInput] = useContext(ConfessionFormContext);
 
 	function handleChange(event: ChangeEvent<HTMLInputElement> | 
 		ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLSelectElement>) {
 		event.preventDefault();
+        if (setInput) {
 		setInput((currentData) =>
 			Object.assign({}, currentData, {
 				[event.target.id]: event.target.value,
 			})
 		);
+        }
 	}
 
 	return (
-		<form className='form' role = 'form' onSubmit = {handleSubmit}>
+		<form className='form' role = 'confession-form' 
+		id = 'confession-form' onSubmit = {handleSubmit}>
 			{formMessages.messages.map((message: string, index: number) => 
 			<FormHeader key = {index.toString()} message = {message}
 			success = {formMessages.success} justTalked = {formMessages.justTalked}/>
 			)}
 			<fieldset className = "fieldset">
 
-			{formTextInput.map((field: FormInputObject) => 
+			{input && formTextInput.map((field: FormInputObject) => 
 
 			<TextInput 
 				key = {field.id}
@@ -106,7 +60,7 @@ const ConfessionForm = () => {
 			/>)
 			}
 
-			{formSelectInput.map((field: FormSelectInputObject) => 
+			{input && formSelectInput.map((field: FormSelectInputObject) => 
 
 				<SelectInput
 				key = {field.id}
@@ -121,7 +75,7 @@ const ConfessionForm = () => {
 				/>)
 			}
 
-			{formTextAreaInput.map((field: FormTextAreaInputObject) => 
+			{input && formTextAreaInput.map((field: FormTextAreaInputObject) => 
 
 			<TextAreaInput 
 				key = {field.id}

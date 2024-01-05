@@ -1,13 +1,14 @@
 import { MISDEMEANOURS } from "../types/misdemeanours.types";
 import { MISDEMEANOUR_OPTIONS} from "../types/misdemeanour_client_types";
-import {FormInputObject, FormSelectInputObject, FormTextAreaInputObject, FormValues} 
+import {ConfessionPostResponse, FormInputObject, FormSelectInputObject, 
+    FormTextAreaInputObject, FormValues} 
 from "../types/form.types";
 
 export const MISDEMEANOUR_FORM_OPTIONS = ["", ...MISDEMEANOUR_OPTIONS, "I just want to talk"];
 export const MISDEMEANOUR_FORM_OPTION_VALUES = ["", ...MISDEMEANOURS, "just-talk"];
 export type MisdemeanourFormKind = (typeof MISDEMEANOUR_FORM_OPTIONS)[number];
 
-export const confessionFormMessages = {
+export const confessionFormMessages: ConfessionPostResponse = {
 messages: ["It's very difficult to catch people committing misdemeanours so we appreciate it when citizens confess to us directly.", 
 "However, if you're just having a hard day and need to vent then you're welcome to contact us here too. Up to you!"],
 success: null,
