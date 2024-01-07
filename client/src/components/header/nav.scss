@@ -15,10 +15,6 @@
       flex-basis: 75%;
   }
 
-    &--light {
-      background-color: $silver;
-    }
-
     &__list {
       display: flex;
       list-style: none;
@@ -28,7 +24,7 @@
       left: 0;
       z-index: 1000;
       padding: 0;
-      width: 90%;
+      width: 100%;
       display: none;
       margin: 0;
       line-height: 1.8rem;
@@ -41,24 +37,28 @@
       }
 
       &--light {
-        background-color: $cream;
+        @include respond-medium { 
+          background-color: transparent;
+        }
       }
     }
 
     &__item {
-      margin: 0 2%;
+      margin: 0;
       padding: 4%;
       font-size: 1.5rem;
-      background-color: $cream;
+      background-color: $lemon;
       font-family: "Algeria";
 
       @include respond-medium { 
         font-size: 1.2rem;
         padding: 0;
+        background-color: transparent;
+        margin: 0 2%; 
       }
 
       @include respond-large { 
-        font-size: 1.9rem;
+        font-size: 1.9rem;  
       }
 
       &--dark a {
@@ -67,13 +67,9 @@
         cursor: pointer;
         color: $dark-blue;
       }
-
-      &--dark a:active {
-        background-color: $noodles;
-      }
     
       &--dark a:hover {
-        color: $fire;
+        color: $cherry;
       }
     }
   
@@ -91,11 +87,12 @@
       }
 
       &--bars {
-        color: $fire;
+        color: $cherry;
         position: fixed;
         top: 1%;
         right: 1%;
         margin: 0;
+        z-index: 2000;
 
         @include respond-medium { 
           display: none;

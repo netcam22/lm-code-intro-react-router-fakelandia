@@ -39,13 +39,13 @@ const ConfessionForm : React.FC<ConfessionFormProps> =
 	}
 
 	return (
-		<form className='form' role = 'confession-form' 
+		<form className='form form--blue' role = 'confession-form' 
 		id = 'confession-form' onSubmit = {handleSubmit}>
 			{formMessages.messages.map((message: string, index: number) => 
 			<FormHeader key = {index.toString()} message = {message}
 			success = {formMessages.success} justTalked = {formMessages.justTalked}/>
 			)}
-			<fieldset className = "fieldset">
+			<fieldset className = "form__fieldset--lemon">
 
 			{input && formTextInput.map((field: FormInputObject) => 
 

@@ -22,7 +22,7 @@ const FilterMisdemeanoursForm = () => {
 	}
 
 	return (
-		<form className='filterMisdemeanoursForm'>
+		<form className='filter-misdemeanours-form'>
 			{formSelectInput.map((field: FormSelectInputObject) => 
 				<SelectInput
 				key = {field.id}
