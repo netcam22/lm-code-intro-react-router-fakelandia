@@ -1,10 +1,12 @@
-interface FlipCardProps {
-    title: string;
+import { MisdemeanourIcon, MisdemeanourTitle } from "../../types/misdemeanour_client_types";
+
+export interface FlipCardProps {
+    title: MisdemeanourTitle;
     count: number;
-    image: string; 
+    image: string;
     alt: string;
     cssClassType: string;
-    icon: string;
+    icon: MisdemeanourIcon;
 }
 
 const FlipCard: React.FC<FlipCardProps> = ({title, count, icon, image, alt, cssClassType}) => {
