@@ -37,14 +37,15 @@ const Confession = () => {
 					headers: {
 						"Content-Type": "application/json",
 					}, 
+					
 					body : JSON.stringify({
 						subject :input.subject, 
 						reason: input.reason, 
 						details: input.details
 					}),
 				});
+				const formResponse = await response.json();
 				if (response.ok) {
-					const formResponse = await response.json();
 					setFormMessages( 
 						{messages: [formResponse.message],
 						success: formResponse.success,
@@ -53,6 +54,13 @@ const Confession = () => {
 					if (input.reason !== "just-talk") {
 						addDataToMisdemeanourList(input.reason as MisdemeanourKind);
 					}
+				}
+				else {
+					setFormMessages( 
+						{messages: [formResponse.message],
+						success: formResponse.success,
+						justTalked: false}
+					);
 				}  
 			} 
 			catch (error) {

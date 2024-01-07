@@ -32,7 +32,7 @@
     font-family: "Algeria";
     font-size: 1.2rem;
     color: $dark-blue;
-    margin: 0 0 2% 0;
+    margin: 2%;
     padding: 0;
     text-align: center;
   
@@ -42,6 +42,23 @@
   
     @include respond-large {
       font-size: 1.6rem;
+    }
+  }
+
+  &__text {
+    background-color: transparent;
+    font-size: 1rem;
+    color: $dark-blue;
+    margin: 0 5%;
+    padding: 0;
+    text-align: center;
+  
+    @include respond-medium {
+      font-size: 1.2rem;
+    }
+  
+    @include respond-large {
+      font-size: 1.3rem;
     }
   }
 }
