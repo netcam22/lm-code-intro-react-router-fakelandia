@@ -37,7 +37,6 @@
       }
 
       &--light {
-        background-color: $cream;
         @include respond-medium { 
           background-color: transparent;
         }
