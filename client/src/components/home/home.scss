@@ -22,6 +22,8 @@
     width: 300px;
     height: 300px;
     perspective: 1000px; 
+    margin-bottom: 2%;
+
     @include respond-medium {  
         flex-basis:40%;
     } 
@@ -41,11 +43,22 @@
             font-family: "Algeria";
             color: $dark-blue;
             font-size: 1.5rem;
+            margin: 5%;
+        }
+        &--icon {
+            color: $dark-blue;
+            font-size: 2rem;
+            margin: 2%;
         }
         &--text {
             font-family: "Algeria";
             color: $dark-blue;
             font-size: 1.2rem;
+            margin: 10%;
+        }
+        &--logo {
+            max-width: 40%;
+            flex-basis: 40%;
         }
     }
 

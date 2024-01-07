@@ -19,3 +19,5 @@ export const MISDEMEANOUR_VIEWS: MisdemeanourView = {
  } as const;
 
  export const MISDEMEANOUR_OPTIONS = Object.values(MISDEMEANOUR_VIEWS).map((view) => view.desc);
+
+ export type MisdemeanourCountType = {[key: string]: number};

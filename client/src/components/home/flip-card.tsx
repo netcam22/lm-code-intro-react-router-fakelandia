@@ -1,12 +1,13 @@
 interface FlipCardProps {
     title: string;
-    text: string;
+    count: number;
     image: string; 
     alt: string;
     cssClassType: string;
+    icon: string;
 }
 
-const FlipCard: React.FC<FlipCardProps> = ({title, text, image, alt, cssClassType}) => {
+const FlipCard: React.FC<FlipCardProps> = ({title, count, icon, image, alt, cssClassType}) => {
 
     const cssClassFront = `flip-card__front flip-card__front--${cssClassType}`; 
     const cssClassBack = `flip-card__back flip-card__back--${cssClassType}`;
@@ -16,13 +17,15 @@ const FlipCard: React.FC<FlipCardProps> = ({title, text, image, alt, cssClassTyp
         <div className="flip-card__inner">
             <div className={cssClassFront}>
             <h1 className="flip-card__inner--title">{title}</h1> 
-            <img className = "header__logo" 
+            <p className="flip-card__inner--icon">{icon}</p> 
+            <img className = "flip-card__inner--logo" 
                 alt = {alt}
                 role = 'logo-image' src= {image}></img>
             </div>
             <div className={cssClassBack}>
                 <h1 className="flip-card__inner--title">{title}</h1> 
-                <p className="flip-card__inner--text">{text}</p> 
+                <p className="flip-card__inner--icon">{icon}</p> 
+                <p className="flip-card__inner--text">Misdemeanours reported today: {count}</p> 
             </div>
         </div>  
     </div>
