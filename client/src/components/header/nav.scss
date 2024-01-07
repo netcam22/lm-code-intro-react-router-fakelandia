@@ -45,16 +45,17 @@
     }
 
     &__item {
-      margin: 0 2%;
+      margin: 0;
       padding: 4%;
       font-size: 1.5rem;
-      background-color: $cream;
+      background-color: $lemon;
       font-family: "Algeria";
 
       @include respond-medium { 
         font-size: 1.2rem;
         padding: 0;
         background-color: transparent;
+        margin: 0 2%; 
       }
 
       @include respond-large { 
@@ -67,13 +68,9 @@
         cursor: pointer;
         color: $dark-blue;
       }
-
-      &--dark a:active {
-        background-color: $noodles;
-      }
     
       &--dark a:hover {
-        color: $fire;
+        color: $cherry;
       }
     }
   
@@ -91,7 +88,7 @@
       }
 
       &--bars {
-        color: $fire;
+        color: $cherry;
         position: fixed;
         top: 1%;
         right: 1%;
