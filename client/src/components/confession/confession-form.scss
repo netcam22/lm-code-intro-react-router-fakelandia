@@ -29,7 +29,8 @@
             background-color: lighten($lemon, 35%);
             color: $dark-blue;
             border: $dark-blue solid 1px;
-            border-radius: 1%;;
+            border-radius: 1%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
         }
     }
 
@@ -54,6 +55,9 @@
         display: inline-block;
         width: 100%;
         font-weight:600;
+        margin: 0 0 0 1%;
+        font-size: 1.5rem;
+        font-family: "Algeria";
     }
 
     &__button {
