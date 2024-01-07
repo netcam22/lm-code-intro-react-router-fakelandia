@@ -49,3 +49,20 @@ it('renders words reported today as part of information in flip card', () => {
     const reported = screen.getByText(/reported today/);
 	expect(reported).toBeInTheDocument();
 });
+
+
+it('renders word Misdemeanours as part of information in flip card', () => {
+
+    const requiredProps: FlipCardProps  = {
+        title: "Not Eating Your Vegetables",
+        count: 5,
+        image: "/src/assets/images/logo.png",
+        alt: "Picture of Not Eating Your Vegetables misdemeanour",
+        cssClassType: "vegetables",
+        icon: "🥗"
+    }
+
+	render(<FlipCard {...requiredProps}/>);
+    const reported = screen.getByText(/Misdemeanours/);
+	expect(reported).toBeInTheDocument();
+});
