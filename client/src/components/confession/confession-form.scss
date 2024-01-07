@@ -72,20 +72,19 @@
     }
     
     &__button:hover {
-        background-color: $fire;
-        color: $darker-blue;
+        background-color: $cherry;
     }
     
     &__button:disabled{
-    border: 1px solid $violet;
-    background-color: $silver;
-    color: $violet;
+    border: 1px solid $olive;
+    background-color: $coconut;
+    color: $olive;
     }
 
     &__message {
         width: 100%;
         &--error {
-            color: $autumn;   
+            color: darken($cherry, 20%);   
         }
         &--normal {
             color: $dark-blue;
@@ -104,7 +103,7 @@
             color: $dark-blue;
         }
         &--navlink a:hover {
-            color: $fire;
+            color: $cherry;
         }
     }    
 }

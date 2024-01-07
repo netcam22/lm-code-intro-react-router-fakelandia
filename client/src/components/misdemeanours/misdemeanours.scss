@@ -1,3 +1,18 @@
+.filter-misdemeanours-form {
+  width: 90%;
+  margin: 0 5%;
+  text-align: center;
+  color: $dark-blue;
+  @include respond-medium {  
+  width: 80%;
+  margin: 0 10%;
+  }
+  @include respond-large{  
+    width: 50%;
+    margin: 0 25%;
+  }
+}
+
 .container {
     padding: 2%;
     display: grid;
