@@ -19,7 +19,7 @@ const [selectedFilter, setSelectedFilter] = useState({...initialValues});
 
 return (
 <>
-    <h2 className = "title">Misdemeanours</h2>
+    <h1 className = "page__title">Misdemeanours</h1>
 
     {<MisdemeanourFilterContext.Provider value={[selectedFilter, setSelectedFilter]}>
     <FilterMisdemeanoursForm />

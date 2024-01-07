@@ -3,7 +3,7 @@
     display: flex;
     margin: 0;
     padding: 1% 2% 8% 2%;
-    background-color: $cream;
+    background-color: lighten($blueberry, 44%);
     color: $fire;
     flex-wrap: wrap;
     flex-direction: column;

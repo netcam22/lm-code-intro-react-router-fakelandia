@@ -77,7 +77,7 @@ const Confession = () => {
 	return (
 
 		<section className = "confession">
-		<h2 className = "title">Confess to Us</h2>
+		<h1 className = "page__title">Confess to Us</h1>
 
 		<ConfessionFormContext.Provider value={[input, setInput]}>
 		<ConfessionForm 

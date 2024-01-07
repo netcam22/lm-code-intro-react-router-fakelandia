@@ -4,7 +4,7 @@ from "../types/form.types";
 import { MISDEMEANOUR_OPTIONS } from "../types/misdemeanour_client_types";
 
 const today = new Date().toLocaleDateString("en-GB");
-const selectAll = `Show All Misdemeanours on ${today}`;
+const selectAll = `Show all Misdemeanours from ${today}`;
 const MISDEMEANOUR_FILTER_OPTIONS = [selectAll, ...MISDEMEANOUR_OPTIONS];
 const MISDEMEANOUR_FILTER_OPTION_VALUES = ["all", ...MISDEMEANOURS];
 

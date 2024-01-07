@@ -4,6 +4,16 @@
     box-sizing: border-box;
     width: 60%;
     margin: 0 auto;
+    font-size: 1.1rem;
+    font-weight:500;
+
+    &--blue {
+        background-color: lighten($blueberry, 40%);
+        color: $dark-blue;
+        border: $dark-blue solid 1px;
+        border-radius: 1%;;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
 
     &::after {
         content: "";
@@ -15,6 +25,12 @@
         float: left;
         width: 80%;
         margin: 5% 10%;
+        &--lemon {
+            background-color: lighten($lemon, 39%);
+            color: $dark-blue;
+            border: $dark-blue solid 1px;
+            border-radius: 1%;;
+        }
     }
 
     &__input {
@@ -37,6 +53,7 @@
         padding: 1% 1% 1% 0;
         display: inline-block;
         width: 100%;
+        font-weight:600;
     }
 
     &__button {
