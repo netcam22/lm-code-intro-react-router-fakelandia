@@ -1,15 +1,21 @@
-import { Misdemeanour} from "./misdemeanours.types";
+import { Misdemeanour, MisdemeanourKind} from "./misdemeanours.types";
 export interface MisdemeanourObject extends Misdemeanour {
     indexValue: string,
 }
-export type MisdemeanourHeading = string;
+export type MisdemeanourHeading = "Citizen Id" | "Date" | "Misdemeanour" | "Punishment Idea";
 
 export type MisdemeanourHeadings  = Array<MisdemeanourHeading>;
 
 export const MISDEMEANOUR_DATA_HEADINGS : 
 MisdemeanourHeadings  = ["Citizen Id", "Date", "Misdemeanour", "Punishment Idea"] as const;
 
-export type MisdemeanourView = {[key: string]: {icon: string, desc: string}};
+export type MisdemeanourTitle  = "Mild Public Rudeness" | "Not Eating Your Vegetables" |
+"Speaking in a Lift" | "Supporting Manchester United";
+export type MisdemeanourIcon  = "🤪" | "🥗" | "🗣" | "😈";
+
+export type MisdemeanourView = {
+	[key in MisdemeanourKind]: { icon: MisdemeanourIcon; desc: MisdemeanourTitle; };
+};
 
 export const MISDEMEANOUR_VIEWS: MisdemeanourView = {
 	rudeness: {icon: "🤪", desc: "Mild Public Rudeness"},
@@ -20,4 +26,4 @@ export const MISDEMEANOUR_VIEWS: MisdemeanourView = {
 
  export const MISDEMEANOUR_OPTIONS = Object.values(MISDEMEANOUR_VIEWS).map((view) => view.desc);
 
- export type MisdemeanourCountType = {[key: string]: number};
+ export type MisdemeanourCountType = {[key : string] : number};

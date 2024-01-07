@@ -19,10 +19,6 @@ const totals = misdemeanourData?.map((row) => {
     return {...acc, [item[0]]: acc[item[0]]+1} 
 }, countValues);
 
-const key = "rudeness";
-if (totals) {
-console.log("totals", totals[key]);
-}
 
 const date = new Date();
 const dateString = date.toDateString();
@@ -37,7 +33,7 @@ return (
     <section className = "grid-container">
 
         {totals && Object.entries(MISDEMEANOUR_VIEWS).map(([key, value], index) => 
-        <FlipCard title={value.desc} alt={`Picture of ${value.desc} misdemenaour`} 
+        <FlipCard title={value.desc} alt={`Picture of ${value.desc} misdemeanour`} 
         icon ={value.icon} image={logo} key={index.toString()} cssClassType ={key} 
         count={totals[key]} />
         )}
