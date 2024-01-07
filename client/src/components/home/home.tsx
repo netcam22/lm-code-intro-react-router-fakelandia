@@ -29,6 +29,10 @@ const dateString = date.toDateString();
 return (
     <>
     <h1 className = "page__title">Home</h1>
+    <p className = "page__text">Welcome to the home of the Justice Department of Fakelandia.</p>
+    <p className = "page__text">Here you can browse a list of recent misdemeanours committed
+        by our citizens, or you can confess to your own misdemeanour.
+    </p>
     <h2 className = "page__sub-title">Misdemeanours reported on {dateString}</h2>
     <section className = "grid-container">
 
